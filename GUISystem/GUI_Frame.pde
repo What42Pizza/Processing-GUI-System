@@ -23,7 +23,10 @@ public class GUI_Frame extends GUI_Element {
   
   
   @Override
-  public void Render() { // This is NOT meant to be called outside the GUI
+  public void Render() {
+    
+    if (Draggable)
+      UpdateDragging();
     
     if (EdgeSize == 0) {
       GUI_Functions.DrawRect (XPos, YPos, XSize, YSize, BackgroundColor);

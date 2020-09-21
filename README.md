@@ -26,25 +26,27 @@ Vars:
 
 - String Name
 
-- float XPos (0 - 1)
-- float YPos (0 - 1)
-- float XSize (0 - 1)
-- float YSize (0 - 1)
+- float XPos (0 - 1) (default 0.25)
+- float YPos (0 - 1) (default 0.25)
+- float XSize (0 - 1) (default 0.5)
+- float YSize (0 - 1) (default 0.5)
 
-- color BackgroundColor
-- color EdgeColor
-- int EdgeSize
+- color BackgroundColor (default 127)
+- color EdgeColor (default 0)
+- int EdgeSize (default 1)
 
-- boolean Draggable (WIP; no functionality)
+- boolean Draggable (default false)
 
 - ArrayList <GUI_Element> Children
+- GUI_Element Parent
 
 
 Functions:
 
 - void AddChild (GUI_Element NewChild)
 - GUI_Element Child (String ChildName)
-- GUI_Element Decendant (String DecendantName)
+- GUI_Element Descendant (String DescendantName)
+- boolean HasMouseHovering ()
 
 
 Constructors:

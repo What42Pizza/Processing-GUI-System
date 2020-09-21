@@ -69,11 +69,11 @@ public class GUI_Functions {
   
   public void DrawRect (float XPos, float YPos, float XSize, float YSize, color BackgroundColor) {
     
-    int ScreenXPos  = GetXOffset (XPos);
-    int ScreenXEnd  = GetXOffset (XPos + XSize);
+    int ScreenXPos  = GetScreenX (XPos);
+    int ScreenXEnd  = GetScreenX (XPos + XSize);
     int ScreenXSize = ScreenXEnd - ScreenXPos;
-    int ScreenYPos  = GetYOffset (YPos);
-    int ScreenYEnd  = GetYOffset (YPos + YSize);
+    int ScreenYPos  = GetScreenY (YPos);
+    int ScreenYEnd  = GetScreenY (YPos + YSize);
     int ScreenYSize = ScreenYEnd - ScreenYPos;
     
     noStroke();
@@ -86,11 +86,11 @@ public class GUI_Functions {
   
   public void DrawRect (float XPos, float YPos, float XSize, float YSize, color BackgroundColor, int EdgeSize, color EdgeColor) {
     
-    int ScreenXPos  = GetXOffset (XPos);
-    int ScreenXEnd  = GetXOffset (XPos + XSize);
+    int ScreenXPos  = GetScreenX (XPos);
+    int ScreenXEnd  = GetScreenX (XPos + XSize);
     int ScreenXSize = ScreenXEnd - ScreenXPos;
-    int ScreenYPos  = GetYOffset (YPos);
-    int ScreenYEnd  = GetYOffset (YPos + YSize);
+    int ScreenYPos  = GetScreenY (YPos);
+    int ScreenYEnd  = GetScreenY (YPos + YSize);
     int ScreenYSize = ScreenYEnd - ScreenYPos;
     
     stroke (EdgeColor);
@@ -104,12 +104,20 @@ public class GUI_Functions {
   
   
   
-  public int GetXOffset (float XPos) {
+  public int GetScreenX (float XPos) {
     return (int)((XPos * CustMatrix_ScaleX + CustMatrix_TranslateX) * width);
   }
   
-  public int GetYOffset (float YPos) {
+  public int GetScreenY (float YPos) {
     return (int)((YPos * CustMatrix_ScaleY + CustMatrix_TranslateY) * height);
+  }
+  
+  public float GetXPos (int ScreenX) {
+    return (((float) ScreenX / width) - CustMatrix_TranslateX) / CustMatrix_ScaleX;
+  }
+  
+  public float GetYPos (int ScreenY) {
+    return (((float) ScreenY / height) - CustMatrix_TranslateY) / CustMatrix_ScaleY;
   }
   
   

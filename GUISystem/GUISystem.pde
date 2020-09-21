@@ -15,6 +15,8 @@ GUI_Element TestFrame3;
 GUI_Element TestFrame4;
 GUI_Element TestFrame5;
 
+GUI_Element GlowingFrame;
+
 
 
 
@@ -33,8 +35,16 @@ void setup() {
   TestFrame3.AddChild (TestFrame4);
   TestFrame4.AddChild (TestFrame5);
   
-  println (TestFrame1.Decendant("TestFrame3"));
-  println (TestFrame1.Decendant("TestFrame6"));
+  GlowingFrame = new GUI_Frame ("GlowingFrame", 0.1, 0.1, 0.1, 0.1);
+  
+  TestFrame1.Draggable = true;
+  
+  println ("Results for TestFrame3: " + TestFrame1.Decendant("TestFrame3"));
+  println ("Results for TestFrame6: " + TestFrame1.Decendant("TestFrame6"));
+  
+  println();
+  println ("Results for TestFrame2: " + TestFrame4.Ancestor("TestFrame2"));
+  println ("Results for TestFrame0: " + TestFrame4.Ancestor("TestFrame0"));
   
 }
 
@@ -48,21 +58,25 @@ void draw() {
   fill (0);
   text (frameRate, 5, 15);
   
-  TestFrame1.XPos = (float) mouseX / width ;
-  TestFrame1.YPos = (float) mouseY / height;
+  TestFrame2.XPos = TestFrame1.XPos;
+  TestFrame2.YPos = TestFrame1.YPos;
   
-  TestFrame2.XPos = (float) mouseX / width ;
-  TestFrame2.YPos = (float) mouseY / height;
+  TestFrame3.XPos = TestFrame1.XPos;
+  TestFrame3.YPos = TestFrame1.YPos;
   
-  TestFrame3.XPos = (float) mouseX / width ;
-  TestFrame3.YPos = (float) mouseY / height;
+  TestFrame4.XPos = TestFrame1.XPos;
+  TestFrame4.YPos = TestFrame1.YPos;
   
-  TestFrame4.XPos = (float) mouseX / width ;
-  TestFrame4.YPos = (float) mouseY / height;
+  TestFrame5.XPos = TestFrame1.XPos;
+  TestFrame5.YPos = TestFrame1.YPos;
   
-  TestFrame5.XPos = (float) mouseX / width ;
-  TestFrame5.YPos = (float) mouseY / height;
+  if (GlowingFrame.HasMouseHovering()) {
+    GlowingFrame.BackgroundColor = color (255);
+  } else {
+    GlowingFrame.BackgroundColor = color (127);
+  }
   
+  GlowingFrame.Render();
   TestFrame1.Render();
   
 }
