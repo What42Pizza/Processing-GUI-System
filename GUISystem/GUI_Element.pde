@@ -12,7 +12,7 @@ public class GUI_Element {
   public int    EdgeSize = 1;
   public String Name = "";
   
-  public boolean Draggable;
+  public boolean Draggable = false;
   
   public ArrayList <GUI_Element> Children = new ArrayList <GUI_Element> ();
   
