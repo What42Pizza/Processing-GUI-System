@@ -61,7 +61,19 @@ public class GUI_Element {
   
   
   public void Render() {
-    println ("Error: Render() is not set up for " + this);
+    println ("Error: The base class GUI_Element cannot be rendered.");
+    exit();
+  }
+  
+  
+  
+  public void Update() {
+    
+    if (Draggable)
+      UpdateDragging();
+      
+    PrevMousePressed = mousePressed;
+    
   }
   
   
@@ -129,6 +141,12 @@ public class GUI_Element {
   
   
   
+  public boolean JustClicked() {
+    return mousePressed && !PrevMousePressed && this.HasMouseHovering(); // I know the 'this.' isn't necessary but it makes the function name make more sense
+  }
+  
+  
+  
   
   
   public void UpdateDragging() {
@@ -145,15 +163,13 @@ public class GUI_Element {
       
     }
     
-    if (mousePressed && !PrevMousePressed && this.HasMouseHovering()) { // I know the 'this.' isn't necessary but it makes the function name make more sense
+    if (JustClicked()) {
       Dragging = true;
       Dragging_StartMouseX = mouseX;
       Dragging_StartMouseY = mouseY;
       Dragging_StartXPos = XPos;
       Dragging_StartYPos = YPos;
     }
-    
-    PrevMousePressed = mousePressed;
     
   }
   

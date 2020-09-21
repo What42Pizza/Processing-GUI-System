@@ -24,6 +24,7 @@ GUI_Element GlowingFrame;
 void setup() {
   
   fullScreen();
+  frameRate (60);
   
   TestFrame1 = new GUI_Frame ("TestFrame1", 0.25, 0.25, 0.5, 0.5);
   TestFrame2 = new GUI_Frame ("TestFrame2", 0.25, 0.25, 0.5, 0.5);
@@ -35,7 +36,7 @@ void setup() {
   TestFrame3.AddChild (TestFrame4);
   TestFrame4.AddChild (TestFrame5);
   
-  GlowingFrame = new GUI_Frame ("GlowingFrame", 0.1, 0.1, 0.1, 0.1);
+  GlowingFrame = new GUI_TextFrame ("GlowingFrame", 0.1, 0.1, 0.1, 0.1, "Hover over me!");
   
   TestFrame1.Draggable = true;
   
@@ -56,7 +57,9 @@ void draw() {
   
   background (255);
   fill (0);
-  text (frameRate, 5, 15);
+  textSize (15);
+  textAlign (LEFT, BOTTOM);
+  text (frameRate, 4, 25);
   
   TestFrame2.XPos = TestFrame1.XPos;
   TestFrame2.YPos = TestFrame1.YPos;

@@ -24,15 +24,9 @@ public class GUI_Frame extends GUI_Element {
   
   @Override
   public void Render() {
+    Update();
     
-    if (Draggable)
-      UpdateDragging();
-    
-    if (EdgeSize == 0) {
-      GUI_Functions.DrawRect (XPos, YPos, XSize, YSize, BackgroundColor);
-    } else {
-      GUI_Functions.DrawRect (XPos, YPos, XSize, YSize, BackgroundColor, EdgeSize, EdgeColor);
-    }
+    GUI_Functions.DrawRect (XPos, YPos, XSize, YSize, BackgroundColor, EdgeSize, EdgeColor);
     
     PushMatrix();
     Translate (XPos, YPos);

@@ -67,6 +67,7 @@ public class GUI_Functions {
   
   
   
+  /*
   public void DrawRect (float XPos, float YPos, float XSize, float YSize, color BackgroundColor) {
     
     int ScreenXPos  = GetScreenX (XPos);
@@ -81,6 +82,7 @@ public class GUI_Functions {
     rect (ScreenXPos, ScreenYPos, ScreenXSize, ScreenYSize);
     
   }
+  */
   
   
   
@@ -97,6 +99,17 @@ public class GUI_Functions {
     strokeWeight (EdgeSize);
     fill (BackgroundColor);
     rect (ScreenXPos, ScreenYPos, ScreenXSize, ScreenYSize);
+    
+  }
+  
+  
+  
+  public void DrawText (String Text, float XPos, float YPos, color TextColor, int TextSize) {
+    
+    fill (TextColor);
+    textAlign (CENTER, CENTER);
+    textSize (TextSize);
+    text (Text, GetScreenX (XPos), GetScreenY (YPos));
     
   }
   
