@@ -69,17 +69,16 @@ public class GUI_Functions {
   
   public void DrawRect (float XPos, float YPos, float XSize, float YSize, color BackgroundColor) {
     
-    int XStart = GetXOffset(XPos);
-    int XEnd = GetXOffset (XPos + XSize) + 1;
-    int YStart = GetYOffset(YPos);
-    int YEnd = GetYOffset (YPos + YSize) + 1;
+    int ScreenXPos  = GetXOffset (XPos);
+    int ScreenXEnd  = GetXOffset (XPos + XSize);
+    int ScreenXSize = ScreenXEnd - ScreenXPos;
+    int ScreenYPos  = GetYOffset (YPos);
+    int ScreenYEnd  = GetYOffset (YPos + YSize);
+    int ScreenYSize = ScreenYEnd - ScreenYPos;
     
-    for (int y = max (YStart, 0); y < min (YEnd, height); y ++) { // Main body
-      int YWidth = y * width;
-      for (int x = max (XStart, 0); x < min (XEnd, width); x ++) {
-        pixels[x + YWidth] = BackgroundColor;
-      }
-    }
+    noStroke();
+    fill (BackgroundColor);
+    rect (ScreenXPos, ScreenYPos, ScreenXSize, ScreenYSize);
     
   }
   
@@ -87,55 +86,17 @@ public class GUI_Functions {
   
   public void DrawRect (float XPos, float YPos, float XSize, float YSize, color BackgroundColor, int EdgeSize, color EdgeColor) {
     
-    int HalfEdgeSize = floor (EdgeSize / 2.0);
-    int XStart = GetXOffset(XPos);
-    int XEnd = GetXOffset (XPos + XSize) + 1;
-    int YStart = GetYOffset(YPos);
-    int YEnd = GetYOffset (YPos + YSize) + 1;
+    int ScreenXPos  = GetXOffset (XPos);
+    int ScreenXEnd  = GetXOffset (XPos + XSize);
+    int ScreenXSize = ScreenXEnd - ScreenXPos;
+    int ScreenYPos  = GetYOffset (YPos);
+    int ScreenYEnd  = GetYOffset (YPos + YSize);
+    int ScreenYSize = ScreenYEnd - ScreenYPos;
     
-    for (int y = max (YStart, 0); y < min (YEnd, height); y ++) { // Main body
-      int YWidth = y * width;
-      for (int x = max (XStart, 0); x < min (XEnd, width); x ++) {
-        pixels[x + YWidth] = BackgroundColor;
-      }
-    }
-    
-    int LeftInner   = constrain (XStart + HalfEdgeSize + 1, 0, width ); // This is needed to avoid out of bounds exceptions (it's also faster when off screen)
-    int LeftOuter   = constrain (XStart - HalfEdgeSize    , 0, width );
-    int RightInner  = constrain (XEnd   - HalfEdgeSize    , 0, width );
-    int RightOuter  = constrain (XEnd   + HalfEdgeSize + 1, 0, width );
-    int TopInner    = constrain (YStart + HalfEdgeSize + 1, 0, height);
-    int TopOuter    = constrain (YStart - HalfEdgeSize    , 0, height);
-    int BottomInner = constrain (YEnd   - HalfEdgeSize    , 0, height);
-    int BottomOuter = constrain (YEnd   + HalfEdgeSize + 1, 0, height);
-    
-    for (int y = TopOuter; y < TopInner; y ++) {       // Edge top
-      int YWidth = y * width;
-      for (int x = LeftOuter; x < RightOuter; x ++) {
-        pixels[x + YWidth] = EdgeColor;
-      }
-    }
-    
-    for (int y = TopOuter; y < BottomOuter; y ++) {    // Edge right side
-      int YWidth = y * width;
-      for (int x = RightInner; x < RightOuter; x ++) {
-        pixels[x + YWidth] = EdgeColor;
-      }
-    }
-    
-    for (int y = BottomInner; y < BottomOuter; y ++) { // Edge bottom
-      int YWidth = y * width;
-      for (int x = LeftOuter; x < RightOuter; x ++) {
-        pixels[x + YWidth] = EdgeColor;
-      }
-    }
-    
-    for (int y = TopOuter; y < BottomOuter; y ++) {    // Edge left side
-      int YWidth = y * width;
-      for (int x = LeftOuter; x < LeftInner; x ++) {
-        pixels[x + YWidth] = EdgeColor;
-      }
-    }
+    stroke (EdgeColor);
+    strokeWeight (EdgeSize);
+    fill (BackgroundColor);
+    rect (ScreenXPos, ScreenYPos, ScreenXSize, ScreenYSize);
     
   }
   

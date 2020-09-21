@@ -4,16 +4,20 @@ public class GUI_Frame extends GUI_Element {
   
   
   
-  public GUI_Frame() {
-    super();
+  public GUI_Frame (String NameIn) {
+    super (NameIn);
   }
   
-  public GUI_Frame (float XPosIn, float YPosIn) {
-    super (XPosIn, YPosIn);
+  public GUI_Frame (String NameIn, float XPosIn, float YPosIn) {
+    super (NameIn, XPosIn, YPosIn);
   }
   
-  public GUI_Frame (float XPosIn, float YPosIn, float XSizeIn, float YSizeIn) {
-    super (XPosIn, YPosIn, XSizeIn, YSizeIn);
+  public GUI_Frame (String NameIn, float XPosIn, float YPosIn, float XSizeIn, float YSizeIn) {
+    super (NameIn, XPosIn, YPosIn, XSizeIn, YSizeIn);
+  }
+  
+  public GUI_Frame (String NameIn, ArrayList <GUI_Element> ChildrenIn) {
+    super (NameIn, ChildrenIn);
   }
   
   
@@ -41,7 +45,7 @@ public class GUI_Frame extends GUI_Element {
   
   @Override
   public String toString() {
-    return "GUI_Frame";
+    return "GUI_Frame " + Name;
   }
   
   
