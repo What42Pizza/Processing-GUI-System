@@ -4,7 +4,7 @@
 
 <br />
 
-Last updated 09/21/20
+Last updated 09/22/20
 
 This is a set of classes you can use in Processing that allows you to easily create GUIs. This was designed in Processing 3.5.3, so you should be using at least that. It might work with earier versions, but I don't know.
 
@@ -17,18 +17,17 @@ The main file is GUISystem/GUISystem.pde, which shows how to use the classes. Al
 
 ### Classes:
 
-- GUI_Element
-  - GUI_Frame
-    - GUI_TextFrame
+- GUI_Frame
+  - GUI_TextFrame
 
 
 <br />
 <br />
 
 
-### GUI_Element:
+### GUI_Frame:
 
-This is the most basic class. It doesn't have any use.
+This is the most basic class. You pretty much just place other GUI elements into this.
 
 <br />
 
@@ -46,46 +45,31 @@ Vars:
 - int EdgeSize (default 1)
 
 - boolean Draggable (default false)
+- boolean Visible (default true) (sets whether this frame is visible)
+- boolean Enabled (default true) (sets whether this frame and all children are visible)
 
-- ArrayList <GUI_Element> Children
-- GUI_Element Parent
-
-<br />
-
-Functions:
-
-- void AddChild (GUI_Element NewChild)
-- GUI_Element Child (String ChildName)
-- GUI_Element Descendant (String DescendantName)
-- boolean HasMouseHovering ()
-
-<br />
-
-Constructors:
-
-- GUI_Element (String Name)
-- GUI_Element (String Name, float XPos, float YPos)
-- GUI_Element (String Name, float XPos, float YPos, float XSize, float YSize)
-- GUI_Element (String Name, ArrayList <GUI_Element> Children)
-
-
-<br />
-<br />
-
-
-### GUI_Frame:
-
-GUI_Frame is the only usable class so far. It is used to create a frame in which you will place other GUI elements.
-
-No new vars.
-
-No new constructors.
+- ArrayList <GUI_Frame> Children
+- GUI_Frame Parent
 
 <br />
 
 Functions:
 
 - void Render ()
+- void AddChild (GUI_Frame NewChild)
+- GUI_Frame Child (String ChildName)
+- GUI_Frame Descendant (String DescendantName)
+- boolean HasMouseHovering ()
+- boolean JustClicked ()
+
+<br />
+
+Constructors:
+
+- GUI_Frame (String Name)
+- GUI_Frame (String Name, float XPos, float YPos)
+- GUI_Frame (String Name, float XPos, float YPos, float XSize, float YSize)
+- GUI_Frame (String Name, ArrayList <GUI_Frame> Children)
 
 
 <br />
@@ -104,11 +88,14 @@ Vars:
 - color TextColor (default 0)
 - float TextSize (default 1 (1/100 of width))
 
+- int TextAlignX (-1 = LEFT, 0 = CENTER, 1 = RIGHT; default = 0)
+- int TextAlignY (-1 = TOP, 0 = CENTER, 1 = BOTTM; default = 0)
+
 Constructors:
 
 - GUI_TextFrame (String Name)
 - GUI_TextFrame (String Name, String Text)
 - GUI_TextFrame (String Name, float XPos, float YPos, String Text)
 - GUI_TextFrame (String Name, float XPos, float YPos, float XSize, float YSize, String Text)
-- GUI_TextFrame (String Name, ArrayList <GUI_Element> Children)
-- GUI_TextFrame (String Name, ArrayList <GUI_Element> Children, String Text)
+- GUI_TextFrame (String Name, ArrayList <GUI_Frame> Children)
+- GUI_TextFrame (String Name, ArrayList <GUI_Frame> Children, String Text)

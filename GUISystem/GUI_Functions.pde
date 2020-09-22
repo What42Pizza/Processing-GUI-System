@@ -107,10 +107,21 @@ public class GUI_Functions {
   public void DrawText (String Text, float XPos, float YPos, color TextColor, int TextSize) {
     
     fill (TextColor);
-    textAlign (CENTER, CENTER);
+    //textAlign (CENTER, CENTER);
     textSize (TextSize);
     text (Text, GetScreenX (XPos), GetScreenY (YPos));
     
+  }
+  
+  
+  
+  
+  
+  int[] TextAlignConversionX = new int[] {37 , 3, 39 };
+  int[] TextAlignConversionY = new int[] {101, 3, 102};
+  
+  public void SetTextAlignment (int TextAlignX, int TextAlignY) {
+    textAlign (TextAlignConversionX[TextAlignX+1], TextAlignConversionY[TextAlignY+1]);
   }
   
   

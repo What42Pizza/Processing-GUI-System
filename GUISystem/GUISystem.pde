@@ -1,5 +1,5 @@
 // Started 09/20/20
-// last updated 09/21/20
+// Last updated 09/22/20
 
 
 
@@ -9,13 +9,19 @@
 
 
 
-GUI_Element TestFrame1;
-GUI_Element TestFrame2;
-GUI_Element TestFrame3;
-GUI_Element TestFrame4;
-GUI_Element TestFrame5;
+GUI_Frame NestedFrame1;
+GUI_Frame NestedFrame2;
+GUI_Frame NestedFrame3;
+GUI_Frame NestedFrame4;
+GUI_Frame NestedFrame5;
 
-GUI_Element GlowingFrame;
+GUI_TextFrame GlowingFrame;
+
+GUI_TextFrame VisibleFrame;
+GUI_Frame NestedVisibleFrame;
+
+GUI_TextFrame EnableFrame;
+GUI_Frame NestedEnableFrame;
 
 
 
@@ -26,26 +32,36 @@ void setup() {
   fullScreen();
   frameRate (60);
   
-  TestFrame1 = new GUI_Frame ("TestFrame1", 0.25, 0.25, 0.5, 0.5);
-  TestFrame2 = new GUI_Frame ("TestFrame2", 0.25, 0.25, 0.5, 0.5);
-  TestFrame3 = new GUI_Frame ("TestFrame3", 0.25, 0.25, 0.5, 0.5);
-  TestFrame4 = new GUI_Frame ("TestFrame4", 0.25, 0.25, 0.5, 0.5);
-  TestFrame5 = new GUI_Frame ("TestFrame5", 0.25, 0.25, 0.5, 0.5);
-  TestFrame1.AddChild (TestFrame2);
-  TestFrame2.AddChild (TestFrame3);
-  TestFrame3.AddChild (TestFrame4);
-  TestFrame4.AddChild (TestFrame5);
+  NestedFrame1 = new GUI_Frame ("NestedFrame1", 0.25, 0.25, 0.5, 0.5);
+  NestedFrame2 = new GUI_Frame ("NestedFrame2", 0.25, 0.25, 0.5, 0.5);
+  NestedFrame3 = new GUI_Frame ("NestedFrame3", 0.25, 0.25, 0.5, 0.5);
+  NestedFrame4 = new GUI_Frame ("NestedFrame4", 0.25, 0.25, 0.5, 0.5);
+  NestedFrame5 = new GUI_Frame ("NestedFrame5", 0.25, 0.25, 0.5, 0.5);
+  NestedFrame1.AddChild (NestedFrame2);
+  NestedFrame2.AddChild (NestedFrame3);
+  NestedFrame3.AddChild (NestedFrame4);
+  NestedFrame4.AddChild (NestedFrame5);
+  NestedFrame1.Draggable = true;
   
-  GlowingFrame = new GUI_TextFrame ("GlowingFrame", 0.1, 0.1, 0.1, 0.1, "Hover over me!");
+  GlowingFrame = new GUI_TextFrame ("GlowingFrame", 0.11, 0.1, 0.1, 0.1, "Hover over me!");
   
-  TestFrame1.Draggable = true;
+  VisibleFrame = new GUI_TextFrame ("VisibleFrame", 0.22, 0.1, 0.1, 0.1, "Visible");
+  NestedVisibleFrame = new GUI_Frame ("NestedVisibleFrame");
+  VisibleFrame.AddChild (NestedVisibleFrame);
+  VisibleFrame.TextAlignY = -1;
   
-  println ("Results for TestFrame3: " + TestFrame1.Decendant("TestFrame3"));
-  println ("Results for TestFrame6: " + TestFrame1.Decendant("TestFrame6"));
+  EnableFrame = new GUI_TextFrame ("EnableFrame" , 0.33, 0.1, 0.1, 0.1, "Enabled");
+  NestedEnableFrame = new GUI_Frame ("NestedEnableFrame");
+  EnableFrame.AddChild (NestedEnableFrame);
+  EnableFrame.TextAlignY = -1;
+  
+  
+  println ("Results for NestedFrame3: " + NestedFrame1.Decendant("NestedFrame3"));
+  println ("Results for NestedFrame6: " + NestedFrame1.Decendant("NestedFrame6"));
   
   println();
-  println ("Results for TestFrame2: " + TestFrame4.Ancestor("TestFrame2"));
-  println ("Results for TestFrame0: " + TestFrame4.Ancestor("TestFrame0"));
+  println ("Results for NestedFrame2: " + NestedFrame4.Ancestor("NestedFrame2"));
+  println ("Results for NestedFrame0: " + NestedFrame4.Ancestor("NestedFrame0"));
   
 }
 
@@ -61,17 +77,17 @@ void draw() {
   textAlign (LEFT, BOTTOM);
   text (frameRate, 4, 25);
   
-  TestFrame2.XPos = TestFrame1.XPos;
-  TestFrame2.YPos = TestFrame1.YPos;
+  NestedFrame2.XPos = NestedFrame1.XPos;
+  NestedFrame2.YPos = NestedFrame1.YPos;
   
-  TestFrame3.XPos = TestFrame1.XPos;
-  TestFrame3.YPos = TestFrame1.YPos;
+  NestedFrame3.XPos = NestedFrame1.XPos;
+  NestedFrame3.YPos = NestedFrame1.YPos;
   
-  TestFrame4.XPos = TestFrame1.XPos;
-  TestFrame4.YPos = TestFrame1.YPos;
+  NestedFrame4.XPos = NestedFrame1.XPos;
+  NestedFrame4.YPos = NestedFrame1.YPos;
   
-  TestFrame5.XPos = TestFrame1.XPos;
-  TestFrame5.YPos = TestFrame1.YPos;
+  NestedFrame5.XPos = NestedFrame1.XPos;
+  NestedFrame5.YPos = NestedFrame1.YPos;
   
   if (GlowingFrame.HasMouseHovering()) {
     GlowingFrame.BackgroundColor = color (255);
@@ -79,7 +95,12 @@ void draw() {
     GlowingFrame.BackgroundColor = color (127);
   }
   
+  VisibleFrame.Visible = !VisibleFrame.HasMouseHovering(); // Make frame not visible when mouse is hovering
+  EnableFrame .Enabled = !EnableFrame .HasMouseHovering(); // Make frame not enabled when mouse is hovering 
+  
   GlowingFrame.Render();
-  TestFrame1.Render();
+  VisibleFrame.Render();
+  EnableFrame .Render();
+  NestedFrame1.Render();
   
 }
