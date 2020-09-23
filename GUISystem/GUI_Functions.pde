@@ -59,7 +59,7 @@ void Scale (float XAmount, float YAmount) {
 
 
 
-GUI_Functions GUI_Functions = new GUI_Functions();
+
 
 public class GUI_Functions {
   
@@ -143,6 +143,161 @@ public class GUI_Functions {
   public float GetYPos (int ScreenY) {
     return (((float) ScreenY / height) - CustMatrix_TranslateY) / CustMatrix_ScaleY;
   }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  public String GetSetting (String[] Settings, String SettingName) {
+    SettingName += ':';
+    for (int i = 0; i < Settings.length - 1; i ++) {
+      String S = Settings[i];
+      if (S.equals(SettingName)) {
+        return Settings [i + 1];
+      }
+    }
+    return null;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  public void SetFrameSettings (GUI_Frame Frame, String[] Settings) {
+    println ("A");
+    
+    
+    
+    String XPos = GetSetting (Settings, "XPos");
+    if (XPos != null)
+      Frame.XPos = float (XPos);
+    
+    String YPos = GetSetting (Settings, "YPos");
+    if (YPos != null)
+      Frame.YPos = float (YPos);
+    
+    String XSize = GetSetting (Settings, "XSize");
+    if (XSize != null)
+      Frame.XSize = float (XSize);
+    
+    String YSize = GetSetting (Settings, "YSize");
+    if (YSize != null)
+      Frame.YSize = float (YSize);
+    
+    
+    
+    String Name = GetSetting (Settings, "Name");
+    if (Name != null)
+      Frame.Name = Name;
+    
+    String BackgroundColor = GetSetting (Settings, "BackgroundColor");
+    if (BackgroundColor != null)
+      Frame.BackgroundColor = unhex (BackgroundColor);
+    
+    String EdgeColor = GetSetting (Settings, "EdgeColor");
+    if (EdgeColor != null)
+      Frame.EdgeColor = unhex (EdgeColor);
+    
+    String EdgeSize = GetSetting (Settings, "EdgeSize");
+    if (EdgeSize != null)
+      Frame.EdgeSize = int (EdgeSize);
+    
+    
+    
+    String Draggable = GetSetting (Settings, "Draggable");
+    if (Draggable != null)
+      Frame.Draggable = boolean (Draggable);    
+    
+    String Visible = GetSetting (Settings, "Visible");
+    if (Visible != null)
+      Frame.Visible = boolean (Visible);    
+    
+    String Enabled = GetSetting (Settings, "Enabled");
+    if (Enabled != null)
+      Frame.Enabled = boolean (Enabled);
+    
+    
+    
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  public void SetTextFrameSettings (GUI_TextFrame TextFrame, String[] Settings) {
+    //SetFrameSettings (TextFrame, Settings); // this isn't needed because it's called by the super call in the constructor
+    
+    
+    
+    String Text = GetSetting (Settings, "Text");
+    if (Text != null)
+      TextFrame.Text = Text;
+    
+    String TextColor = GetSetting (Settings, "TextColor");
+    if (TextColor != null)
+      TextFrame.TextColor = unhex (TextColor);
+    
+    String TextSize = GetSetting (Settings, "TextSize");
+    if (TextSize != null)
+      TextFrame.TextSize = int (TextSize);
+    
+    
+    
+    String TextAlignX = GetSetting (Settings, "TextAlignX");
+    if (TextAlignX != null)
+      TextFrame.TextAlignX = int (TextAlignX);
+    
+    String TextAlignY = GetSetting (Settings, "TextAlignY");
+    if (TextAlignY != null)
+      TextFrame.TextAlignY = int (TextAlignY);
+    
+    
+    
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  public void SetButtonSettings (GUI_Button Button, String[] Settings) {
+    //SetFrameSettings (Button, Settings); // this isn't needed because it's called by the super call in the constructor
+    
+    
+    
+    String PressedBackgroundColor = GetSetting (Settings, "PressedBackgroundColor");
+    if (PressedBackgroundColor != null)
+      Button.PressedBackgroundColor = unhex (PressedBackgroundColor);
+    
+    String UsePressedColor = GetSetting (Settings, "UsePressedColor");
+    if (UsePressedColor != null)
+      Button.UsePressedColor = boolean (UsePressedColor);
+    
+    
+    
+  }
+  
+  
+  
+  
+  
   
   
   

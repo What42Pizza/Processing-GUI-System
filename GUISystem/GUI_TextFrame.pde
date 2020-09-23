@@ -43,23 +43,24 @@ public class GUI_TextFrame extends GUI_Frame {
     Text = TextIn;
   }
   
+  public GUI_TextFrame (String[] SettingsIn) {
+    super (SettingsIn);
+    GUI_Functions.SetTextFrameSettings (this, SettingsIn);
+  }
+  
   
   
   
   
   @Override
-  public void Render() {
+  public void RenderFrame() {
     
-    if (Visible && Enabled) {
-      RenderFrame();
-      GUI_Functions.SetTextAlignment (TextAlignX, TextAlignY);
-      float TextXPos = XPos + XSize / 2 * (TextAlignX + 1);
-      float TextYPos = YPos + YSize / 2 * (TextAlignY + 1);
-      GUI_Functions.DrawText (Text, TextXPos, TextYPos, TextColor, (int) (width * TextSize / 100));
-    }
+    RenderBasicFrame();
     
-    if (Enabled)
-      RenderChildren();
+    GUI_Functions.SetTextAlignment (TextAlignX, TextAlignY);
+    float TextXPos = XPos + XSize / 2 * (TextAlignX + 1);
+    float TextYPos = YPos + YSize / 2 * (TextAlignY + 1);
+    GUI_Functions.DrawText (Text, TextXPos, TextYPos, TextColor, (int) (width * TextSize / 100));
     
   }
   

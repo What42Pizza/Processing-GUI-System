@@ -4,11 +4,13 @@
 
 <br />
 
-Last updated 09/22/20
+Last updated 09/23/20
 
 This is a set of classes you can use in Processing that allows you to easily create GUIs. This was designed in Processing 3.5.3, so you should be using at least that. It might work with earier versions, but I don't know.
 
 The main file is GUISystem/GUISystem.pde, which shows how to use the classes. All other files in GUISystem will need to be copied into your own project in order to be used. Not all files have to be copied, though. If you only need some classes, then you can just copy the files for those classes, the files for their super classes, and GUI_Functions.pde (which always needs to be copied).
+
+YOU NEED TO HAVE "GUI_Functions GUI_Functions = new GUI_Functions();" AT THE START OF YOUR PROGRAM FOR THIS TO WORK!
 
 
 <br />
@@ -19,6 +21,7 @@ The main file is GUISystem/GUISystem.pde, which shows how to use the classes. Al
 
 - GUI_Frame
   - GUI_TextFrame
+  - GUI_Button
 
 
 <br />
@@ -60,7 +63,6 @@ Functions:
 - GUI_Frame Child (String ChildName)
 - GUI_Frame Descendant (String DescendantName)
 - boolean HasMouseHovering ()
-- boolean JustClicked ()
 
 <br />
 
@@ -70,6 +72,7 @@ Constructors:
 - GUI_Frame (String Name, float XPos, float YPos)
 - GUI_Frame (String Name, float XPos, float YPos, float XSize, float YSize)
 - GUI_Frame (String Name, ArrayList <GUI_Frame> Children)
+- GUI_Frame (String[] Settings)
 
 
 <br />
@@ -99,3 +102,19 @@ Constructors:
 - GUI_TextFrame (String Name, float XPos, float YPos, float XSize, float YSize, String Text)
 - GUI_TextFrame (String Name, ArrayList <GUI_Frame> Children)
 - GUI_TextFrame (String Name, ArrayList <GUI_Frame> Children, String Text)
+
+
+
+### GUI_Button
+
+New new constructors.
+
+Vars:
+
+- boolean UsePressedColor (default true)
+- color PressedBackgroundColor (default: 63)
+- boolean Pressed (read only)
+
+Functions:
+
+- boolean JustClicked()

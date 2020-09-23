@@ -7,14 +7,16 @@ public class GUI_Frame {
   public float XSize = 0.5;
   public float YSize = 0.5;
   
+  public String Name = "[Error: Name for GUI_Frame has not been set.]";
   public color  BackgroundColor = color (127);
   public color  EdgeColor = color (0);
   public int    EdgeSize = 1;
-  public String Name = "";
   
   public boolean Draggable = false;
   public boolean Visible = true;
   public boolean Enabled = true;
+  
+  
   
   public boolean Dragging = false;
   public boolean PrevMousePressed = false;
@@ -53,6 +55,10 @@ public class GUI_Frame {
     Children = ChildrenIn;
   }
   
+  public GUI_Frame (String[] SettingsIn) {
+    GUI_Functions.SetFrameSettings (this, SettingsIn);
+  }
+  
   
   
   
@@ -76,8 +82,14 @@ public class GUI_Frame {
   
   
   public void RenderFrame() {
+    RenderBasicFrame();
+  }
+  
+  public void RenderBasicFrame() {
     GUI_Functions.DrawRect (XPos, YPos, XSize, YSize, BackgroundColor, EdgeSize, EdgeColor);
   }
+  
+  
   
   public void RenderChildren() {
     PushMatrix();
@@ -92,6 +104,12 @@ public class GUI_Frame {
   
   
   public void Update() {
+    BasicUpdate();
+  }
+  
+  
+  
+  public void BasicUpdate() {
     
     if (Draggable)
       UpdateDragging();
@@ -99,6 +117,11 @@ public class GUI_Frame {
     PrevMousePressed = mousePressed;
     
   }
+  
+  
+  
+  
+  
   
   
   
@@ -165,12 +188,6 @@ public class GUI_Frame {
   
   
   
-  public boolean JustClicked() {
-    return mousePressed && !PrevMousePressed && this.HasMouseHovering(); // I know the 'this.' isn't necessary but it makes the function name make more sense
-  }
-  
-  
-  
   
   
   public void UpdateDragging() {
@@ -187,7 +204,7 @@ public class GUI_Frame {
       
     }
     
-    if (JustClicked()) {
+    if (mousePressed && !PrevMousePressed && this.HasMouseHovering()) { // I know the 'this.' is needed but it makes the name more understandable
       Dragging = true;
       Dragging_StartMouseX = mouseX;
       Dragging_StartMouseY = mouseY;

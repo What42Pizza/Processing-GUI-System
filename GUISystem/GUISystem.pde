@@ -1,5 +1,5 @@
 // Started 09/20/20
-// Last updated 09/22/20
+// Last updated 09/23/20
 
 
 
@@ -7,9 +7,21 @@
 
 
 
+GUI_Functions GUI_Functions = new GUI_Functions(); // YOU NEED TO HAVE THIS AT THE START OF YOUR PROGRAM FOR THIS TO WORK
 
 
-GUI_Frame NestedFrame1;
+
+
+
+GUI_Frame NestedFrame1 = new GUI_Frame (new String[] {
+  "Name:" , "NestedFrame1",
+  "XPos:" , "0.25",
+  "YPos:" , "0.25",
+  "XSize:", "0.5" ,
+  "YSize:", "0.5" ,
+  "Draggable:", "true",
+});
+
 GUI_Frame NestedFrame2;
 GUI_Frame NestedFrame3;
 GUI_Frame NestedFrame4;
@@ -23,6 +35,8 @@ GUI_Frame NestedVisibleFrame;
 GUI_TextFrame EnableFrame;
 GUI_Frame NestedEnableFrame;
 
+GUI_Button ButtonFrame;
+
 
 
 
@@ -32,7 +46,7 @@ void setup() {
   fullScreen();
   frameRate (60);
   
-  NestedFrame1 = new GUI_Frame ("NestedFrame1", 0.25, 0.25, 0.5, 0.5);
+  //NestedFrame1 = new GUI_Frame ("NestedFrame1", 0.25, 0.25, 0.5, 0.5);
   NestedFrame2 = new GUI_Frame ("NestedFrame2", 0.25, 0.25, 0.5, 0.5);
   NestedFrame3 = new GUI_Frame ("NestedFrame3", 0.25, 0.25, 0.5, 0.5);
   NestedFrame4 = new GUI_Frame ("NestedFrame4", 0.25, 0.25, 0.5, 0.5);
@@ -41,7 +55,7 @@ void setup() {
   NestedFrame2.AddChild (NestedFrame3);
   NestedFrame3.AddChild (NestedFrame4);
   NestedFrame4.AddChild (NestedFrame5);
-  NestedFrame1.Draggable = true;
+  //NestedFrame1.Draggable = true;
   
   GlowingFrame = new GUI_TextFrame ("GlowingFrame", 0.11, 0.1, 0.1, 0.1, "Hover over me!");
   
@@ -54,6 +68,8 @@ void setup() {
   NestedEnableFrame = new GUI_Frame ("NestedEnableFrame");
   EnableFrame.AddChild (NestedEnableFrame);
   EnableFrame.TextAlignY = -1;
+  
+  ButtonFrame = new GUI_Button ("ButtonFrame", 0.44, 0.1, 0.1, 0.1);
   
   
   println ("Results for NestedFrame3: " + NestedFrame1.Decendant("NestedFrame3"));
@@ -101,6 +117,7 @@ void draw() {
   GlowingFrame.Render();
   VisibleFrame.Render();
   EnableFrame .Render();
+  ButtonFrame .Render();
   NestedFrame1.Render();
   
 }
