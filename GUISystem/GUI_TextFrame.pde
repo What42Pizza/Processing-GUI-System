@@ -48,14 +48,18 @@ public class GUI_TextFrame extends GUI_Frame {
     GUI_Functions.SetTextFrameSettings (this, SettingsIn);
   }
   
+  public GUI_TextFrame (String[] SettingsIn, GUI_Frame[] ChildrenIn) {
+    super (SettingsIn, ChildrenIn);
+    GUI_Functions.SetTextFrameSettings (this, SettingsIn);
+  }
+  
   
   
   
   
   @Override
   public void RenderFrame() {
-    
-    RenderBasicFrame();
+    super.RenderFrame();
     
     GUI_Functions.SetTextAlignment (TextAlignX, TextAlignY);
     float TextXPos = XPos + XSize / 2 * (TextAlignX + 1);

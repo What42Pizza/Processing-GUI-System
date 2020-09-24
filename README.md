@@ -73,6 +73,7 @@ Constructors:
 - GUI_Frame (String Name, float XPos, float YPos, float XSize, float YSize)
 - GUI_Frame (String Name, ArrayList <GUI_Frame> Children)
 - GUI_Frame (String[] Settings)
+- GUI_Frame (String[] Settings, GUI_Frame[] Children)
 
 
 <br />
@@ -102,6 +103,8 @@ Constructors:
 - GUI_TextFrame (String Name, float XPos, float YPos, float XSize, float YSize, String Text)
 - GUI_TextFrame (String Name, ArrayList <GUI_Frame> Children)
 - GUI_TextFrame (String Name, ArrayList <GUI_Frame> Children, String Text)
+- GUI_TextFrame (String[] Settings)
+- GUI_TextFrame (String[] Settings, GUI_Frame[] Children)
 
 
 

@@ -44,8 +44,8 @@ public class GUI_Frame {
   
   public GUI_Frame (String NameIn, float XPosIn, float YPosIn, float XSizeIn, float YSizeIn) {
     Name = NameIn;
-    XPos = YPosIn;
-    YPos = XPosIn;
+    XPos = XPosIn;
+    YPos = YPosIn;
     XSize = XSizeIn;
     YSize = YSizeIn;
   }
@@ -56,6 +56,13 @@ public class GUI_Frame {
   }
   
   public GUI_Frame (String[] SettingsIn) {
+    GUI_Functions.SetFrameSettings (this, SettingsIn);
+  }
+  
+  public GUI_Frame (String[] SettingsIn, GUI_Frame[] ChildrenIn) {
+    for (GUI_Frame F : ChildrenIn) {
+      Children.add (F);
+    }
     GUI_Functions.SetFrameSettings (this, SettingsIn);
   }
   
@@ -82,10 +89,6 @@ public class GUI_Frame {
   
   
   public void RenderFrame() {
-    RenderBasicFrame();
-  }
-  
-  public void RenderBasicFrame() {
     GUI_Functions.DrawRect (XPos, YPos, XSize, YSize, BackgroundColor, EdgeSize, EdgeColor);
   }
   

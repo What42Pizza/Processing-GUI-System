@@ -172,7 +172,6 @@ public class GUI_Functions {
   
   
   public void SetFrameSettings (GUI_Frame Frame, String[] Settings) {
-    println ("A");
     
     
     

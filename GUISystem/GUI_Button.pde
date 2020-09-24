@@ -31,12 +31,17 @@ public class GUI_Button extends GUI_Frame {
     GUI_Functions.SetButtonSettings (this, SettingsIn);
   }
   
+  public GUI_Button (String[] SettingsIn, GUI_Frame[] ChildrenIn) {
+    super (SettingsIn, ChildrenIn);
+    GUI_Functions.SetButtonSettings (this, SettingsIn);
+  }
+  
   
   
   
   
   @Override
-  public void RenderBasicFrame() {
+  public void RenderFrame() {
     if (Pressed) {
       GUI_Functions.DrawRect (XPos, YPos, XSize, YSize, PressedBackgroundColor, EdgeSize, EdgeColor);
     } else {
