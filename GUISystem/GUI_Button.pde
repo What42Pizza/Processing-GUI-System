@@ -7,6 +7,8 @@ public class GUI_Button extends GUI_Frame {
   public color PressedBackgroundColor = color (63);
   public boolean UsePressedColor = true;
   public boolean Pressed = false;
+  public float XMove = 0;
+  public float YMove = 1;
   
   
   
@@ -45,7 +47,7 @@ public class GUI_Button extends GUI_Frame {
   @Override
   public void RenderFrame() {
     if (Pressed) {
-      GUI_Functions.DrawRect (XPos, YPos, XSize, YSize, PressedBackgroundColor, EdgeSize, EdgeColor);
+      GUI_Functions.DrawRect (XPos + XMove / 300, YPos + YMove / 300, XSize, YSize, PressedBackgroundColor, EdgeSize, EdgeColor);
     } else {
       GUI_Functions.DrawRect (XPos, YPos, XSize, YSize, BackgroundColor, EdgeSize, EdgeColor);
     }

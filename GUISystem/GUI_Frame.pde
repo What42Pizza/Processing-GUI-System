@@ -11,9 +11,9 @@ public class GUI_Frame {
   public float XSize = 0.5;
   public float YSize = 0.5;
   
-  public color  BackgroundColor = color (127);
-  public color  EdgeColor = color (0);
-  public int    EdgeSize = 1;
+  public color BackgroundColor = color (127);
+  public color EdgeColor = color (0);
+  public int   EdgeSize = 1;
   
   public boolean Draggable = false;
   public boolean Visible = true;

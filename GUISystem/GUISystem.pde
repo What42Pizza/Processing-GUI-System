@@ -111,7 +111,7 @@ GUI_Frame NestedVisibleFrame = new GUI_Frame ("NestedVisibleFrame");
 
 
 GUI_TextFrame EnableFrame = new GUI_TextFrame (new String[] {
-  "Name:", "EnableFrame",
+  "Name:" , "EnableFrame",
   "XPos:" , "0.1 ",
   "YPos:" , "0.33",
   "XSize:", "0.1" ,
@@ -128,12 +128,24 @@ GUI_Frame NestedEnableFrame = new GUI_Frame ("NestedEnableFrame");
 
 
 GUI_TextButton ButtonFrame = new GUI_TextButton (new String[] {
-  "Name:", "TextButton",
-  "XPos:", "0.1",
-  "YPos:", "0.44",
-  "XSize:", "0.1",
-  "YSize:", "0.1",
-  "Text:", "Click me!"
+  "Name:" , "TextButton",
+  "XPos:" , "0.1" ,
+  "YPos:" , "0.44",
+  "XSize:", "0.1" ,
+  "YSize:", "0.1" ,
+  "Text:" , "Click me!",
+});
+
+
+
+
+
+GUI_ImageButton ImageButtonFrame = new GUI_ImageButton (new String[] {
+  "Name:" , "ImageButtonFrame",
+  "XPos:" , "0.1" ,
+  "YPos:" , "0.55",
+  "XSize:", "0.1" ,
+  "YSize:", 16.0 / 9.0 * 0.1 + " ",
 });
 
 
@@ -164,11 +176,15 @@ void setup() {
     
   AllFrames.AddChild (ButtonFrame);
   
+  AllFrames.AddChild (ImageButtonFrame);
+  
   AllFrames.AddChild (NestedFrame1);
     NestedFrame1.AddChild (NestedFrame2);
       NestedFrame2.AddChild (NestedFrame3);
         NestedFrame3.AddChild (NestedFrame4);
           NestedFrame4.AddChild (NestedFrame5);
+  
+  thread ("LoadButtonImage");
   
   
   
@@ -194,6 +210,23 @@ void setup() {
   
   
 }
+
+
+
+
+
+void LoadButtonImage() {
+  try {
+    ImageButtonFrame.Image = loadImage ("https://processing.org/img/processing3-logo.png"); // Go to https://processing.org/img for a list of images
+  } catch (Exception e) {
+    println ("Error: could not load image for ImageButtonFrame");
+  }
+}
+
+
+
+
+
 
 
 

@@ -23,6 +23,7 @@ The main file is GUISystem/GUISystem.pde, which shows how to use the classes. Al
   - GUI_TextFrame
   - GUI_Button
     - GUI_TextButton
+    - GUI_ImageButton
 
 
 
@@ -132,6 +133,8 @@ Vars:
 
 - boolean UsePressedColor (default true)
 - color PressedBackgroundColor (default: 63)
+- float XMove (default: 0)
+- float YMove (default: 1)
 - boolean Pressed (read only)
 
 <br />
@@ -189,6 +192,38 @@ Constructors:
 - GUI_TextButton (String Name, ArrayList <GUI_Frame> Children, String Text)
 - GUI_TextButton (String[] Settings)
 - GUI_TextButton (String[] Settings, GUI_Frame[] Children)
+
+
+
+<br />
+<br />
+
+
+
+### GUI_ImageButton
+
+GUI_ImageButton is like a button, but with an image.
+
+<br />
+
+Vars:
+
+- PImage Image
+
+<br />
+
+No new functions.
+
+<br />
+
+Constructors:
+
+- GUI_Frame (String Name)
+- GUI_Frame (String Name, float XPos, float YPos)
+- GUI_Frame (String Name, float XPos, float YPos, float XSize, float YSize)
+- GUI_Frame (String Name, ArrayList <GUI_Frame> Children)
+- GUI_Frame (String[] Settings)
+- GUI_Frame (String[] Settings, GUI_Frame[] Children)
 
 
 

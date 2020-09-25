@@ -115,6 +115,21 @@ public class GUI_Functions {
   
   
   
+  public void DrawImage (PImage Image, float XPos, float YPos, float XSize, float YSize) {
+    
+    int ScreenXPos  = GetScreenX (XPos);
+    int ScreenXEnd  = GetScreenX (XPos + XSize);
+    int ScreenXSize = ScreenXEnd - ScreenXPos;
+    int ScreenYPos  = GetScreenY (YPos);
+    int ScreenYEnd  = GetScreenY (YPos + YSize);
+    int ScreenYSize = ScreenYEnd - ScreenYPos;
+    
+    image (Image, ScreenXPos, ScreenYPos, ScreenXSize, ScreenYSize);
+    
+  }
+  
+  
+  
   
   
   int[] TextAlignConversionX = new int[] {37 , 3, 39 };
@@ -291,6 +306,16 @@ public class GUI_Functions {
     
     
     
+    String XMove = GetSetting (Settings, "XMove");
+    if (XMove != null)
+      Button.XMove = float (XMove);
+    
+    String YMove = GetSetting (Settings, "YMove");
+    if (YMove != null)
+      Button.YMove = float (YMove);
+    
+    
+    
   }
   
   
@@ -328,6 +353,22 @@ public class GUI_Functions {
     String TextAlignY = GetSetting (Settings, "TextAlignY");
     if (TextAlignY != null)
       TextButton.TextAlignY = int (TextAlignY);
+    
+    
+    
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  public void SetImageButtonSettings (GUI_ImageButton ImageButton, String[] Settings) {
+    //SetButtonSettings (Button, Settings); // this isn't needed because it's called by the super call in the constructor
     
     
     
