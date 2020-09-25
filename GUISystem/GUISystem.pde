@@ -1,5 +1,5 @@
 // Started 09/20/20
-// Last updated 09/23/20
+// Last updated 09/25/20
 
 
 
@@ -18,7 +18,7 @@ GUI_Functions GUI_Functions = new GUI_Functions(); // YOU NEED TO HAVE THIS AT T
 
 
 
-GUI_Frame MainFrame = new GUI_Frame ( new String[] {
+GUI_Frame AllFrames = new GUI_Frame (new String[] { // This holds all other frames so they can be rendered with one line of code
   "Name:" , "MainFrame",
   "XPos:" , "0",
   "YPos:" , "0",
@@ -33,13 +33,16 @@ GUI_Frame MainFrame = new GUI_Frame ( new String[] {
 
 
 
-GUI_Frame NestedFrame1 = new GUI_Frame (new String[] {
+GUI_Frame NestedFrame1 = new GUI_TextFrame (new String[] {
   "Name:" , "NestedFrame1",
   "XPos:" , "0.25",
   "YPos:" , "0.25",
   "XSize:", "0.5" ,
   "YSize:", "0.5" ,
   "Draggable:", "true",
+  "Text:", "Drag me!",
+  "TextAlignY:", "-1",
+  "TextSize:", "2",
 });
 
 GUI_Frame NestedFrame2 = new GUI_Frame (new String[] {
@@ -115,6 +118,7 @@ GUI_TextFrame EnableFrame = new GUI_TextFrame (new String[] {
   "YSize:", "0.1" ,
   "Text:" , "Enable",
   "TextAlignY:", "-1",
+  "TextSize:", "1.5",
 });
 
 GUI_Frame NestedEnableFrame = new GUI_Frame ("NestedEnableFrame");
@@ -123,7 +127,14 @@ GUI_Frame NestedEnableFrame = new GUI_Frame ("NestedEnableFrame");
 
 
 
-GUI_Button ButtonFrame = new GUI_Button ("ButtonFrame", 0.1, 0.44, 0.1, 0.1);
+GUI_TextButton ButtonFrame = new GUI_TextButton (new String[] {
+  "Name:", "TextButton",
+  "XPos:", "0.1",
+  "YPos:", "0.44",
+  "XSize:", "0.1",
+  "YSize:", "0.1",
+  "Text:", "Click me!"
+});
 
 
 
@@ -143,17 +154,17 @@ void setup() {
   
   
   
-  MainFrame.AddChild (GlowingFrame);
+  AllFrames.AddChild (GlowingFrame);
   
-  MainFrame.AddChild (VisibleFrame);
+  AllFrames.AddChild (VisibleFrame);
     VisibleFrame.AddChild (NestedVisibleFrame);
     
-  MainFrame.AddChild (EnableFrame);
+  AllFrames.AddChild (EnableFrame);
     EnableFrame.AddChild (NestedEnableFrame);
     
-  MainFrame.AddChild (ButtonFrame);
+  AllFrames.AddChild (ButtonFrame);
   
-  MainFrame.AddChild (NestedFrame1);
+  AllFrames.AddChild (NestedFrame1);
     NestedFrame1.AddChild (NestedFrame2);
       NestedFrame2.AddChild (NestedFrame3);
         NestedFrame3.AddChild (NestedFrame4);
@@ -227,7 +238,7 @@ void draw() {
   
   
   
-  MainFrame.Render(); // Renders all frames
+  AllFrames.Render(); // Renders all frames
   
   
   

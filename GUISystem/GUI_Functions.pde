@@ -302,4 +302,44 @@ public class GUI_Functions {
   
   
   
+  public void SetTextButtonSettings (GUI_TextButton TextButton, String[] Settings) {
+    //SetButtonSettings (Button, Settings); // this isn't needed because it's called by the super call in the constructor
+    
+    
+    
+    String Text = GetSetting (Settings, "Text");
+    if (Text != null)
+      TextButton.Text = Text;
+    
+    String TextColor = GetSetting (Settings, "TextColor");
+    if (TextColor != null)
+      TextButton.TextColor = unhex (TextColor);
+    
+    String TextSize = GetSetting (Settings, "TextSize");
+    if (TextSize != null)
+      TextButton.TextSize = int (TextSize);
+    
+    
+    
+    String TextAlignX = GetSetting (Settings, "TextAlignX");
+    if (TextAlignX != null)
+      TextButton.TextAlignX = int (TextAlignX);
+    
+    String TextAlignY = GetSetting (Settings, "TextAlignY");
+    if (TextAlignY != null)
+      TextButton.TextAlignY = int (TextAlignY);
+    
+    
+    
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 }

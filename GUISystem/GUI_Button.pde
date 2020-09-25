@@ -2,6 +2,8 @@ public class GUI_Button extends GUI_Frame {
   
   
   
+  public String Name = "[Error: Name for this GUI_Button has not been set.]";
+  
   public color PressedBackgroundColor = color (63);
   public boolean UsePressedColor = true;
   public boolean Pressed = false;
@@ -52,7 +54,8 @@ public class GUI_Button extends GUI_Frame {
   
   
   @Override
-  public void Update() {
+  public void MainUpdate() {
+    super.MainUpdate();
     
     if (Pressed) {
       if (!mousePressed) {
@@ -68,7 +71,6 @@ public class GUI_Button extends GUI_Frame {
       }
     }
     
-    BasicUpdate();
   }
   
   
@@ -77,6 +79,15 @@ public class GUI_Button extends GUI_Frame {
   
   public boolean JustClicked() {
     return mousePressed && !PrevMousePressed && this.HasMouseHovering();
+  }
+  
+  
+  
+  
+  
+  @Override
+  public String toString() {
+    return "GUI_Button: " + Name;
   }
   
   

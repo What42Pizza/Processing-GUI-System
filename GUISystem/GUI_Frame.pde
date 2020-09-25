@@ -2,12 +2,15 @@ public class GUI_Frame {
   
   
   
+  
+  
+  public String Name = "[Error: Name for this GUI_Frame has not been set.]";
+  
   public float XPos = 0.25;
   public float YPos = 0.25;
   public float XSize = 0.5;
   public float YSize = 0.5;
   
-  public String Name = "[Error: Name for GUI_Frame has not been set.]";
   public color  BackgroundColor = color (127);
   public color  EdgeColor = color (0);
   public int    EdgeSize = 1;
@@ -76,7 +79,8 @@ public class GUI_Frame {
   
   
   public void Render() {
-    Update();
+    MainUpdate();
+    EndUpdate();
     
     if (Visible && Enabled)
       RenderFrame();
@@ -106,19 +110,15 @@ public class GUI_Frame {
   
   
   
-  public void Update() {
-    BasicUpdate();
+  public void MainUpdate() {
+    if (Draggable)
+      UpdateDragging();
   }
   
   
   
-  public void BasicUpdate() {
-    
-    if (Draggable)
-      UpdateDragging();
-      
+  public void EndUpdate() {
     PrevMousePressed = mousePressed;
-    
   }
   
   

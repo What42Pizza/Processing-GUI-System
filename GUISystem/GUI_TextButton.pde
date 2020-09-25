@@ -1,10 +1,9 @@
-public class GUI_TextFrame extends GUI_Frame {
+public class GUI_TextButton extends GUI_Button {
   
   
   
   
-  
-  public String Name = "[Error: Name for this GUI_TextFrame has not been set.]";
+  public String Name = "[Error: Name for this GUI_TextButton has not been set.]";
   
   public String Text = "";
   public color TextColor = color (0);
@@ -17,42 +16,42 @@ public class GUI_TextFrame extends GUI_Frame {
   
   
   
-  public GUI_TextFrame (String NameIn) {
+  public GUI_TextButton (String NameIn) {
     super (NameIn);
   }
   
-  public GUI_TextFrame (String NameIn, String TextIn) {
+  public GUI_TextButton (String NameIn, String TextIn) {
     super (NameIn);
     Text = TextIn;
   }
   
-  public GUI_TextFrame (String NameIn, float XPosIn, float YPosIn, String TextIn) {
+  public GUI_TextButton (String NameIn, float XPosIn, float YPosIn, String TextIn) {
     super (NameIn, XPosIn, YPosIn);
     Text = TextIn;
   }
   
-  public GUI_TextFrame (String NameIn, float XPosIn, float YPosIn, float XSizeIn, float YSizeIn, String TextIn) {
+  public GUI_TextButton (String NameIn, float XPosIn, float YPosIn, float XSizeIn, float YSizeIn, String TextIn) {
     super (NameIn, XPosIn, YPosIn, XSizeIn, YSizeIn);
     Text = TextIn;
   }
   
-  public GUI_TextFrame (String NameIn, ArrayList <GUI_Frame> ChildrenIn) {
+  public GUI_TextButton (String NameIn, ArrayList <GUI_Frame> ChildrenIn) {
     super (NameIn, ChildrenIn);
   }
   
-  public GUI_TextFrame (String NameIn, ArrayList <GUI_Frame> ChildrenIn, String TextIn) {
+  public GUI_TextButton (String NameIn, ArrayList <GUI_Frame> ChildrenIn, String TextIn) {
     super (NameIn, ChildrenIn);
     Text = TextIn;
   }
   
-  public GUI_TextFrame (String[] SettingsIn) {
+  public GUI_TextButton (String[] SettingsIn) {
     super (SettingsIn);
-    GUI_Functions.SetTextFrameSettings (this, SettingsIn);
+    GUI_Functions.SetTextButtonSettings (this, SettingsIn);
   }
   
-  public GUI_TextFrame (String[] SettingsIn, GUI_Frame[] ChildrenIn) {
+  public GUI_TextButton (String[] SettingsIn, GUI_Frame[] ChildrenIn) {
     super (SettingsIn, ChildrenIn);
-    GUI_Functions.SetTextFrameSettings (this, SettingsIn);
+    GUI_Functions.SetTextButtonSettings (this, SettingsIn);
   }
   
   
@@ -72,9 +71,11 @@ public class GUI_TextFrame extends GUI_Frame {
   
   
   
+  
+  
   @Override
   public String toString() {
-    return "GUI_TextFrame " + Name;
+    return "GUI_TextButton: " + Name;
   }
   
   

@@ -4,7 +4,7 @@
 
 <br />
 
-Last updated 09/23/20
+Last updated 09/25/20
 
 This is a set of classes you can use in Processing that allows you to easily create GUIs. This was designed in Processing 3.5.3, so you should be using at least that. It might work with earier versions, but I don't know.
 
@@ -13,8 +13,10 @@ The main file is GUISystem/GUISystem.pde, which shows how to use the classes. Al
 YOU NEED TO HAVE "GUI_Functions GUI_Functions = new GUI_Functions();" AT THE START OF YOUR PROGRAM FOR THIS TO WORK!
 
 
+
 <br />
 <br />
+
 
 
 ### Classes:
@@ -22,10 +24,13 @@ YOU NEED TO HAVE "GUI_Functions GUI_Functions = new GUI_Functions();" AT THE STA
 - GUI_Frame
   - GUI_TextFrame
   - GUI_Button
+    - GUI_TextButton
+
 
 
 <br />
 <br />
+
 
 
 ### GUI_Frame:
@@ -76,8 +81,10 @@ Constructors:
 - GUI_Frame (String[] Settings, GUI_Frame[] Children)
 
 
+
 <br />
 <br />
+
 
 
 ### GUI_TextFrame
@@ -85,6 +92,8 @@ Constructors:
 GUI_TextFrame is like a frame, but with text.
 
 No new functions.
+
+<br />
 
 Vars:
 
@@ -94,6 +103,8 @@ Vars:
 
 - int TextAlignX (-1 = LEFT, 0 = CENTER, 1 = RIGHT; default = 0)
 - int TextAlignY (-1 = TOP, 0 = CENTER, 1 = BOTTM; default = 0)
+
+<br />
 
 Constructors:
 
@@ -108,9 +119,14 @@ Constructors:
 
 
 
+<br />
+<br />
+
+
+
 ### GUI_Button
 
-New new constructors.
+GUI_Button is the most basic button. You should prabably use GUI_TextButton instead of this.
 
 Vars:
 
@@ -118,6 +134,56 @@ Vars:
 - color PressedBackgroundColor (default: 63)
 - boolean Pressed (read only)
 
+<br />
+
 Functions:
 
 - boolean JustClicked()
+
+<br />
+
+Constructors:
+
+- GUI_Frame (String Name)
+- GUI_Frame (String Name, float XPos, float YPos)
+- GUI_Frame (String Name, float XPos, float YPos, float XSize, float YSize)
+- GUI_Frame (String Name, ArrayList <GUI_Frame> Children)
+- GUI_Frame (String[] Settings)
+- GUI_Frame (String[] Settings, GUI_Frame[] Children)
+
+
+
+<br />
+<br />
+
+
+
+### GUI_TextButton
+
+GUI_TextButton is like a button, but with text.
+
+No new functions.
+
+<br />
+
+Vars:
+
+- String Text (default "")
+- color TextColor (default 0)
+- float TextSize (default 1 (1/100 of width))
+
+- int TextAlignX (-1 = LEFT, 0 = CENTER, 1 = RIGHT; default = 0)
+- int TextAlignY (-1 = TOP, 0 = CENTER, 1 = BOTTM; default = 0)
+
+<br />
+
+Constructors:
+
+- GUI_TextButton (String Name)
+- GUI_TextButton (String Name, String Text)
+- GUI_TextButton (String Name, float XPos, float YPos, String Text)
+- GUI_TextButton (String Name, float XPos, float YPos, float XSize, float YSize, String Text)
+- GUI_TextButton (String Name, ArrayList <GUI_Frame> Children)
+- GUI_TextButton (String Name, ArrayList <GUI_Frame> Children, String Text)
+- GUI_TextButton (String[] Settings)
+- GUI_TextButton (String[] Settings, GUI_Frame[] Children)
