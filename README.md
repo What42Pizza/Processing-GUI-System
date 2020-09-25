@@ -4,13 +4,11 @@
 
 <br />
 
-Last updated 09/25/20
-
 This is a set of classes you can use in Processing that allows you to easily create GUIs. This was designed in Processing 3.5.3, so you should be using at least that. It might work with earier versions, but I don't know.
 
 The main file is GUISystem/GUISystem.pde, which shows how to use the classes. All other files in GUISystem will need to be copied into your own project in order to be used. Not all files have to be copied, though. If you only need some classes, then you can just copy the files for those classes, the files for their super classes, and GUI_Functions.pde (which always needs to be copied).
 
-YOU NEED TO HAVE "GUI_Functions GUI_Functions = new GUI_Functions();" AT THE START OF YOUR PROGRAM FOR THIS TO WORK!
+### YOU NEED TO HAVE "GUI_Functions GUI_Functions = new GUI_Functions();" AT THE START OF YOUR PROGRAM FOR THIS TO WORK!
 
 
 
@@ -91,8 +89,6 @@ Constructors:
 
 GUI_TextFrame is like a frame, but with text.
 
-No new functions.
-
 <br />
 
 Vars:
@@ -103,6 +99,10 @@ Vars:
 
 - int TextAlignX (-1 = LEFT, 0 = CENTER, 1 = RIGHT; default = 0)
 - int TextAlignY (-1 = TOP, 0 = CENTER, 1 = BOTTM; default = 0)
+
+<br />
+
+No new functions.
 
 <br />
 
@@ -162,8 +162,6 @@ Constructors:
 
 GUI_TextButton is like a button, but with text.
 
-No new functions.
-
 <br />
 
 Vars:
@@ -177,6 +175,10 @@ Vars:
 
 <br />
 
+No new functions.
+
+<br />
+
 Constructors:
 
 - GUI_TextButton (String Name)
@@ -187,3 +189,11 @@ Constructors:
 - GUI_TextButton (String Name, ArrayList <GUI_Frame> Children, String Text)
 - GUI_TextButton (String[] Settings)
 - GUI_TextButton (String[] Settings, GUI_Frame[] Children)
+
+
+
+
+
+<br />
+
+Last updated 09/25/20
