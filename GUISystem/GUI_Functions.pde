@@ -190,6 +190,10 @@ public class GUI_Functions {
     
     
     
+    String Name = GetSetting (Settings, "Name");
+    if (Name != null)
+      Frame.Name = Name;
+    
     String XPos = GetSetting (Settings, "XPos");
     if (XPos != null)
       Frame.XPos = float (XPos);
@@ -207,10 +211,6 @@ public class GUI_Functions {
       Frame.YSize = float (YSize);
     
     
-    
-    String Name = GetSetting (Settings, "Name");
-    if (Name != null)
-      Frame.Name = Name;
     
     String BackgroundColor = GetSetting (Settings, "BackgroundColor");
     if (BackgroundColor != null)
@@ -328,7 +328,7 @@ public class GUI_Functions {
   
   
   public void SetTextButtonSettings (GUI_TextButton TextButton, String[] Settings) {
-    //SetButtonSettings (Button, Settings); // this isn't needed because it's called by the super call in the constructor
+    //SetButtonSettings (TextButton, Settings); // this isn't needed because it's called by the super call in the constructor
     
     
     
@@ -368,7 +368,35 @@ public class GUI_Functions {
   
   
   public void SetImageButtonSettings (GUI_ImageButton ImageButton, String[] Settings) {
-    //SetButtonSettings (Button, Settings); // this isn't needed because it's called by the super call in the constructor
+    //SetButtonSettings (ImageButton, Settings); // this isn't needed because it's called by the super call in the constructor
+    
+    
+    
+    String RenderFrame = GetSetting (Settings, "RenderFrame");
+    if (RenderFrame != null)
+      ImageButton.RenderFrame = boolean (RenderFrame);
+    
+    
+    
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  public void SetImageFrameSettings (GUI_ImageFrame ImageFrame, String[] Settings) {
+    //SetFrameSettings (ImageFrame, Settings); // this isn't needed because it's called by the super call in the constructor
+    
+    
+    
+    String RenderFrame = GetSetting (Settings, "RenderFrame");
+    if (RenderFrame != null)
+      ImageFrame.RenderFrame = boolean (RenderFrame);
     
     
     

@@ -1,5 +1,5 @@
 // Started 09/20/20
-// Last updated 09/25/20
+// Last updated 09/28/20
 
 
 
@@ -184,7 +184,7 @@ void setup() {
         NestedFrame3.AddChild (NestedFrame4);
           NestedFrame4.AddChild (NestedFrame5);
   
-  thread ("LoadButtonImage");
+  thread ("LoadImages");
   
   
   
@@ -215,11 +215,16 @@ void setup() {
 
 
 
-void LoadButtonImage() {
+void LoadImages() {
   try {
-    ImageButtonFrame.Image = loadImage ("https://processing.org/img/processing3-logo.png"); // Go to https://processing.org/img for a list of images
+    
+    ImageButtonFrame.Image = loadImage ("https://processing.org/imag/processing3-logo.png"); // Go to https://processing.org/img for a list of images
+    if (ImageButtonFrame.Image == null) println (0/0);
+    ImageButtonFrame.RenderFrame = false;
+    
   } catch (Exception e) {
-    println ("Error: could not load image for ImageButtonFrame");
+    println ();
+    println ("Error: could not load image for " + ImageButtonFrame);
   }
 }
 

@@ -2,7 +2,7 @@ public class GUI_Button extends GUI_Frame {
   
   
   
-  public String Name = "[Error: Name for this GUI_Button has not been set.]";
+  
   
   public color PressedBackgroundColor = color (63);
   public boolean UsePressedColor = true;
@@ -89,7 +89,11 @@ public class GUI_Button extends GUI_Frame {
   
   @Override
   public String toString() {
-    return "GUI_Button: " + Name;
+    if (Name != null) {
+      return "GUI_Button " + Name;
+    } else {
+      return "[Error: Name for this GUI_Button has not been set.]";
+    }
   }
   
   

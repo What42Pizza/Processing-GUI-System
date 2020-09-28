@@ -4,7 +4,7 @@ public class GUI_Frame {
   
   
   
-  public String Name = "[Error: Name for this GUI_Frame has not been set.]";
+  public String Name;
   
   public float XPos = 0.25;
   public float YPos = 0.25;
@@ -227,7 +227,11 @@ public class GUI_Frame {
   
   
   public String toString() {
-    return "GUI_Frame " + Name;
+    if (Name != null) {
+      return "GUI_Frame " + Name;
+    } else {
+      return "[Error: Name for this GUI_Frame has not been set.]";
+    }
   }
   
   

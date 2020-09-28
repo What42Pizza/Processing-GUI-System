@@ -3,9 +3,9 @@ public class GUI_ImageButton extends GUI_Button {
   
   
   
-  public String Name = "[Error: Name for this GUI_ImageButton has not been set.]";
   
   public PImage Image;
+  public boolean RenderFrame = true;
   
   
   
@@ -41,12 +41,12 @@ public class GUI_ImageButton extends GUI_Button {
   
   public GUI_ImageButton (String[] SettingsIn) {
     super (SettingsIn);
-    //GUI_Functions.SetImageButtonSettings (this, SettingsIn);
+    GUI_Functions.SetImageButtonSettings (this, SettingsIn);
   }
   
   public GUI_ImageButton (String[] SettingsIn, GUI_Frame[] ChildrenIn) {
     super (SettingsIn, ChildrenIn);
-    //GUI_Functions.SetImageButtonSettings (this, SettingsIn);
+    GUI_Functions.SetImageButtonSettings (this, SettingsIn);
   }
   
   
@@ -56,15 +56,17 @@ public class GUI_ImageButton extends GUI_Button {
   @Override
   public void RenderFrame() {
     
-    if (Image == null) {
+    if (RenderFrame)
       super.RenderFrame();
-    } else {
+    
+    if (Image != null) {
       if (Pressed) {
         GUI_Functions.DrawImage (Image, XPos + XMove / 300, YPos + YMove / 300, XSize, YSize);
       } else {
         GUI_Functions.DrawImage (Image, XPos, YPos, XSize, YSize);
       }
     }
+      
     
   }
   
@@ -74,7 +76,11 @@ public class GUI_ImageButton extends GUI_Button {
   
   @Override
   public String toString() {
-    return "GUI_ImageButton: " + Name;
+    if (Name != null) {
+      return "GUI_ImageButton " + Name;
+    } else {
+      return "[Error: Name for this GUI_ImageButton has not been set.]";
+    }
   }
   
   

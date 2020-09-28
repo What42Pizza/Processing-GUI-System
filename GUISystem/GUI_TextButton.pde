@@ -3,7 +3,6 @@ public class GUI_TextButton extends GUI_Button {
   
   
   
-  public String Name = "[Error: Name for this GUI_TextButton has not been set.]";
   
   public String Text = "";
   public color TextColor = color (0);
@@ -63,9 +62,14 @@ public class GUI_TextButton extends GUI_Button {
     super.RenderFrame();
     
     GUI_Functions.SetTextAlignment (TextAlignX, TextAlignY);
-    float TextXPos = XPos + XSize / 2 * (TextAlignX + 1) + XMove / 300;
-    float TextYPos = YPos + YSize / 2 * (TextAlignY + 1) + YMove / 300;
-    GUI_Functions.DrawText (Text, TextXPos, TextYPos, TextColor, (int) (width * TextSize / 100));
+    float TextXPos = XPos + XSize / 2 * (TextAlignX + 1);
+    float TextYPos = YPos + YSize / 2 * (TextAlignY + 1);
+    
+    if (Pressed) {
+      GUI_Functions.DrawText (Text, TextXPos + XMove / 300, TextYPos + YMove / 300, TextColor, (int) (width * TextSize / 100));
+    } else {
+      GUI_Functions.DrawText (Text, TextXPos, TextYPos, TextColor, (int) (width * TextSize / 100));
+    }
     
   }
   
@@ -75,7 +79,11 @@ public class GUI_TextButton extends GUI_Button {
   
   @Override
   public String toString() {
-    return "GUI_TextButton: " + Name;
+    if (Name != null) {
+      return "GUI_TextButton " + Name;
+    } else {
+      return "[Error: Name for this GUI_TextButton has not been set.]";
+    }
   }
   
   

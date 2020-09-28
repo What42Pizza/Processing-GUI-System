@@ -208,7 +208,8 @@ GUI_ImageButton is like a button, but with an image.
 
 Vars:
 
-- PImage Image
+- PImage Image (default: null)
+- boolean RenderFrame (default: true)
 
 <br />
 
@@ -219,9 +220,46 @@ No new functions.
 Constructors:
 
 - GUI_Frame (String Name)
-- GUI_Frame (String Name, float XPos, float YPos)
-- GUI_Frame (String Name, float XPos, float YPos, float XSize, float YSize)
+- GUI_Frame (String Name, PImage Image)
+- GUI_Frame (String Name, float XPos, float YPos, PImage Image)
+- GUI_Frame (String Name, float XPos, float YPos, float XSize, float YSize, PImage Image)
 - GUI_Frame (String Name, ArrayList <GUI_Frame> Children)
+- GUI_Frame (String Name, ArrayList <GUI_Frame> Children, PImage Image)
+- GUI_Frame (String[] Settings)
+- GUI_Frame (String[] Settings, GUI_Frame[] Children)
+
+
+
+<br />
+<br />
+
+
+
+### GUI_ImageFrame
+
+GUI_ImageFrame is like a frame, but with an image.
+
+<br />
+
+Vars:
+
+- PImage Image (default: null)
+- boolean RenderFrame (default: true)
+
+<br />
+
+No new functions.
+
+<br />
+
+Constructors:
+
+- GUI_Frame (String Name)
+- GUI_Frame (String Name, PImage Image)
+- GUI_Frame (String Name, float XPos, float YPos, PImage Image)
+- GUI_Frame (String Name, float XPos, float YPos, float XSize, float YSize, PImage Image)
+- GUI_Frame (String Name, ArrayList <GUI_Frame> Children)
+- GUI_Frame (String Name, ArrayList <GUI_Frame> Children, PImage Image)
 - GUI_Frame (String[] Settings)
 - GUI_Frame (String[] Settings, GUI_Frame[] Children)
 
@@ -231,4 +269,4 @@ Constructors:
 
 <br />
 
-Last updated 09/25/20
+Last updated 09/28/20

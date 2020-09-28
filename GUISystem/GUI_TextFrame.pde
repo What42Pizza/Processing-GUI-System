@@ -4,8 +4,6 @@ public class GUI_TextFrame extends GUI_Frame {
   
   
   
-  public String Name = "[Error: Name for this GUI_TextFrame has not been set.]";
-  
   public String Text = "";
   public color TextColor = color (0);
   public float TextSize = 1;
@@ -74,7 +72,11 @@ public class GUI_TextFrame extends GUI_Frame {
   
   @Override
   public String toString() {
-    return "GUI_TextFrame " + Name;
+    if (Name != null) {
+      return "GUI_TextFrame " + Name;
+    } else {
+      return "[Error: Name for this GUI_TextFrame has not been set.]";
+    }
   }
   
   
