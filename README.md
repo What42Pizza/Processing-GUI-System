@@ -21,6 +21,7 @@ The main file is GUISystem/GUISystem.pde, which shows how to use the classes. Al
 
 - GUI_Frame
   - GUI_TextFrame
+  - GUI_ImageFrame
   - GUI_Button
     - GUI_TextButton
     - GUI_ImageButton
@@ -125,6 +126,41 @@ Constructors:
 
 
 
+### GUI_ImageFrame
+
+GUI_ImageFrame is like a frame, but with an image.
+
+<br />
+
+Vars:
+
+- PImage Image (default: null)
+- boolean RenderFrame (default: true)
+
+<br />
+
+No new functions.
+
+<br />
+
+Constructors:
+
+- GUI_Frame (String Name)
+- GUI_Frame (String Name, PImage Image)
+- GUI_Frame (String Name, float XPos, float YPos, PImage Image)
+- GUI_Frame (String Name, float XPos, float YPos, float XSize, float YSize, PImage Image)
+- GUI_Frame (String Name, ArrayList <GUI_Frame> Children)
+- GUI_Frame (String Name, ArrayList <GUI_Frame> Children, PImage Image)
+- GUI_Frame (String[] Settings)
+- GUI_Frame (String[] Settings, GUI_Frame[] Children)
+
+
+
+<br />
+<br />
+
+
+
 ### GUI_Button
 
 GUI_Button is the most basic button. You should prabably use GUI_TextButton instead of this.
@@ -203,41 +239,6 @@ Constructors:
 ### GUI_ImageButton
 
 GUI_ImageButton is like a button, but with an image.
-
-<br />
-
-Vars:
-
-- PImage Image (default: null)
-- boolean RenderFrame (default: true)
-
-<br />
-
-No new functions.
-
-<br />
-
-Constructors:
-
-- GUI_Frame (String Name)
-- GUI_Frame (String Name, PImage Image)
-- GUI_Frame (String Name, float XPos, float YPos, PImage Image)
-- GUI_Frame (String Name, float XPos, float YPos, float XSize, float YSize, PImage Image)
-- GUI_Frame (String Name, ArrayList <GUI_Frame> Children)
-- GUI_Frame (String Name, ArrayList <GUI_Frame> Children, PImage Image)
-- GUI_Frame (String[] Settings)
-- GUI_Frame (String[] Settings, GUI_Frame[] Children)
-
-
-
-<br />
-<br />
-
-
-
-### GUI_ImageFrame
-
-GUI_ImageFrame is like a frame, but with an image.
 
 <br />
 
