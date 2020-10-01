@@ -2,18 +2,18 @@
 
 # THIS IS A WORK IN PROGRESS.
 
-## NEEDS UPDATING
-
 <br />
 
 This is a set of classes you can use in Processing that allows you to easily create GUIs. This was designed in Processing 3.5.3, so you should be using at least that. It might work with earier versions, but I don't know.
 
 The main file is GUISystem/GUISystem.pde, which shows how to use the classes. All other files in GUISystem will need to be copied into your own project in order to be used. Not all files have to be copied, though. If you only need some classes, then you can just copy the files for those classes, the files for their super classes, and GUI_Functions.pde (which always needs to be copied).
 
-### YOU NEED TO HAVE "GUI_Functions GUI_Functions = new GUI_Functions();" AT THE START OF YOUR PROGRAM FOR THIS TO WORK!
+### YOU NEED TO HAVE "GUI_Functions GUIFunctions = new GUI_Functions();" AT THE START OF YOUR PROGRAM FOR THIS TO WORK!
 
 
 
+<br />
+<br />
 <br />
 <br />
 <br />
@@ -83,6 +83,7 @@ Constructors:
 - GUI_Frame (String Name, ArrayList <GUI_Frame> Children)
 - GUI_Frame (String[] Settings)
 - GUI_Frame (String[] Settings, GUI_Frame[] Children)
+- GUI_Frame (File FrameFolder) (see end of readme)
 
 
 
@@ -123,6 +124,7 @@ Constructors:
 - GUI_TextFrame (String Name, ArrayList <GUI_Frame> Children, String Text)
 - GUI_TextFrame (String[] Settings)
 - GUI_TextFrame (String[] Settings, GUI_Frame[] Children)
+- GUI_TextFrame (File FrameFolder) (see end of readme)
 
 
 
@@ -151,14 +153,15 @@ No new functions.
 
 Constructors:
 
-- GUI_Frame (String Name)
-- GUI_Frame (String Name, PImage Image)
-- GUI_Frame (String Name, float XPos, float YPos, PImage Image)
-- GUI_Frame (String Name, float XPos, float YPos, float XSize, float YSize, PImage Image)
-- GUI_Frame (String Name, ArrayList <GUI_Frame> Children)
-- GUI_Frame (String Name, ArrayList <GUI_Frame> Children, PImage Image)
-- GUI_Frame (String[] Settings)
-- GUI_Frame (String[] Settings, GUI_Frame[] Children)
+- GUI_ImageFrame (String Name)
+- GUI_ImageFrame (String Name, PImage Image)
+- GUI_ImageFrame (String Name, float XPos, float YPos, PImage Image)
+- GUI_ImageFrame (String Name, float XPos, float YPos, float XSize, float YSize, PImage Image)
+- GUI_ImageFrame (String Name, ArrayList <GUI_Frame> Children)
+- GUI_ImageFrame (String Name, ArrayList <GUI_Frame> Children, PImage Image)
+- GUI_ImageFrame (String[] Settings)
+- GUI_ImageFrame (String[] Settings, GUI_Frame[] Children)
+- GUI_ImageFrame (File FrameFolder) (see end of readme)
 
 
 
@@ -190,12 +193,13 @@ Functions:
 
 Constructors:
 
-- GUI_Frame (String Name)
-- GUI_Frame (String Name, float XPos, float YPos)
-- GUI_Frame (String Name, float XPos, float YPos, float XSize, float YSize)
-- GUI_Frame (String Name, ArrayList <GUI_Frame> Children)
-- GUI_Frame (String[] Settings)
-- GUI_Frame (String[] Settings, GUI_Frame[] Children)
+- GUI_Button (String Name)
+- GUI_Button (String Name, float XPos, float YPos)
+- GUI_Button (String Name, float XPos, float YPos, float XSize, float YSize)
+- GUI_Button (String Name, ArrayList <GUI_Frame> Children)
+- GUI_Button (String[] Settings)
+- GUI_Button (String[] Settings, GUI_Frame[] Children)
+- GUI_Button (File FrameFolder) (see end of readme)
 
 
 
@@ -236,6 +240,7 @@ Constructors:
 - GUI_TextButton (String Name, ArrayList <GUI_Frame> Children, String Text)
 - GUI_TextButton (String[] Settings)
 - GUI_TextButton (String[] Settings, GUI_Frame[] Children)
+- GUI_TextButton (File FrameFolder) (see end of readme)
 
 
 
@@ -264,19 +269,50 @@ No new functions.
 
 Constructors:
 
-- GUI_Frame (String Name)
-- GUI_Frame (String Name, PImage Image)
-- GUI_Frame (String Name, float XPos, float YPos, PImage Image)
-- GUI_Frame (String Name, float XPos, float YPos, float XSize, float YSize, PImage Image)
-- GUI_Frame (String Name, ArrayList <GUI_Frame> Children)
-- GUI_Frame (String Name, ArrayList <GUI_Frame> Children, PImage Image)
-- GUI_Frame (String[] Settings)
-- GUI_Frame (String[] Settings, GUI_Frame[] Children)
+- GUI_ImageButton (String Name)
+- GUI_ImageButton (String Name, PImage Image)
+- GUI_ImageButton (String Name, float XPos, float YPos, PImage Image)
+- GUI_ImageButton (String Name, float XPos, float YPos, float XSize, float YSize, PImage Image)
+- GUI_ImageButton (String Name, ArrayList <GUI_Frame> Children)
+- GUI_ImageButton (String Name, ArrayList <GUI_Frame> Children, PImage Image)
+- GUI_ImageButton (String[] Settings)
+- GUI_ImageButton (String[] Settings, GUI_Frame[] Children)
+- GUI_ImageButton (File FrameFolder) (see end of readme)
+
+
+
+<br />
+<br />
+<br />
+<br />
+<br />
+
+
+
+Using (File FrameFolder) constructors:
+
+Every class has this constructor. It is used for loading a GUI from files.
+
+The File given has to be a folder, and that folder has to have a Properties.txt. The Properties file holds information the same way that it would be given for a String[] constructor.
+
+The folder can also have other folders in it, and they would be the frame's children. In order for it to recognized as a child, it has to start with "Child." followed by the type of class it is. You can place another period if you want to add addition text.
+
+Here's an example of how you would set up a GUI that loads GUI/StartingFrame:
+
+- GUI
+  - StartingFrame
+    - Properties.txt
+    - Child.GUI_Frame.ThisIsANestedFrame
+      - Properties.txt
+      - Chils.GUI_Frame.ThisIsAnotherNestedFrame
+        - Properties.txt
 
 
 
 
 
+<br />
+<br />
 <br />
 
 Last updated 09/30/20
