@@ -32,12 +32,25 @@ public class GUI_Button extends GUI_Frame {
   
   public GUI_Button (String[] SettingsIn) {
     super (SettingsIn);
-    GUI_Functions.SetButtonSettings (this, SettingsIn);
+    GUIFunctions.SetButtonSettings (this, SettingsIn);
   }
   
   public GUI_Button (String[] SettingsIn, GUI_Frame[] ChildrenIn) {
     super (SettingsIn, ChildrenIn);
-    GUI_Functions.SetButtonSettings (this, SettingsIn);
+    GUIFunctions.SetButtonSettings (this, SettingsIn);
+  }
+  
+  public GUI_Button (boolean EnabledIn) {
+    super (EnabledIn);
+  }
+  
+  public GUI_Button (File FrameFolder) {
+    this (FrameFolder, loadStrings (GetChildFile (FrameFolder, "Properties.txt")));
+  }
+  
+  public GUI_Button (File FrameFolder, String[] SettingsIn) {
+    super (FrameFolder, SettingsIn);
+    GUIFunctions.SetButtonSettings (this, SettingsIn);
   }
   
   
@@ -47,9 +60,9 @@ public class GUI_Button extends GUI_Frame {
   @Override
   public void RenderFrame() {
     if (Pressed) {
-      GUI_Functions.DrawRect (XPos + XMove / 300, YPos + YMove / 300, XSize, YSize, PressedBackgroundColor, EdgeSize, EdgeColor);
+      GUIFunctions.DrawRect (XPos + XMove / 300, YPos + YMove / 300, XSize, YSize, PressedBackgroundColor, EdgeSize, EdgeColor);
     } else {
-      GUI_Functions.DrawRect (XPos, YPos, XSize, YSize, BackgroundColor, EdgeSize, EdgeColor);
+      GUIFunctions.DrawRect (XPos, YPos, XSize, YSize, BackgroundColor, EdgeSize, EdgeColor);
     }
   }
   

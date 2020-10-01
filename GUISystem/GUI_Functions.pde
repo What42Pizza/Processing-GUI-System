@@ -52,6 +52,18 @@ void Scale (float XAmount, float YAmount) {
 
 
 
+public File GetChildFile (File Folder, String ChildName) {
+  File Output = null;
+  for (File F : Folder.listFiles()) {
+    if (F.getName().equals(ChildName)) {
+      return F;
+    }
+  }
+  return Output;
+}
+
+
+
 
 
 
@@ -266,7 +278,7 @@ public class GUI_Functions {
     
     String TextSize = GetSetting (Settings, "TextSize");
     if (TextSize != null)
-      TextFrame.TextSize = int (TextSize);
+      TextFrame.TextSize = float (TextSize);
     
     
     
@@ -277,6 +289,28 @@ public class GUI_Functions {
     String TextAlignY = GetSetting (Settings, "TextAlignY");
     if (TextAlignY != null)
       TextFrame.TextAlignY = int (TextAlignY);
+    
+    
+    
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  public void SetImageFrameSettings (GUI_ImageFrame ImageFrame, String[] Settings) {
+    //SetFrameSettings (ImageFrame, Settings); // this isn't needed because it's called by the super call in the constructor
+    
+    
+    
+    String RenderFrame = GetSetting (Settings, "RenderFrame");
+    if (RenderFrame != null)
+      ImageFrame.RenderFrame = boolean (RenderFrame);
     
     
     
@@ -342,7 +376,7 @@ public class GUI_Functions {
     
     String TextSize = GetSetting (Settings, "TextSize");
     if (TextSize != null)
-      TextButton.TextSize = int (TextSize);
+      TextButton.TextSize = float (TextSize);
     
     
     
@@ -375,28 +409,6 @@ public class GUI_Functions {
     String RenderFrame = GetSetting (Settings, "RenderFrame");
     if (RenderFrame != null)
       ImageButton.RenderFrame = boolean (RenderFrame);
-    
-    
-    
-  }
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  public void SetImageFrameSettings (GUI_ImageFrame ImageFrame, String[] Settings) {
-    //SetFrameSettings (ImageFrame, Settings); // this isn't needed because it's called by the super call in the constructor
-    
-    
-    
-    String RenderFrame = GetSetting (Settings, "RenderFrame");
-    if (RenderFrame != null)
-      ImageFrame.RenderFrame = boolean (RenderFrame);
     
     
     

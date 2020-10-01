@@ -45,12 +45,25 @@ public class GUI_TextButton extends GUI_Button {
   
   public GUI_TextButton (String[] SettingsIn) {
     super (SettingsIn);
-    GUI_Functions.SetTextButtonSettings (this, SettingsIn);
+    GUIFunctions.SetTextButtonSettings (this, SettingsIn);
   }
   
   public GUI_TextButton (String[] SettingsIn, GUI_Frame[] ChildrenIn) {
     super (SettingsIn, ChildrenIn);
-    GUI_Functions.SetTextButtonSettings (this, SettingsIn);
+    GUIFunctions.SetTextButtonSettings (this, SettingsIn);
+  }
+  
+  public GUI_TextButton (boolean EnabledIn) {
+    super (EnabledIn);
+  }
+  
+  public GUI_TextButton (File FrameFolder) {
+    this (FrameFolder, loadStrings (GetChildFile (FrameFolder, "Properties.txt")));
+  }
+  
+  public GUI_TextButton (File FrameFolder, String[] SettingsIn) {
+    super (FrameFolder, SettingsIn);
+    GUIFunctions.SetTextButtonSettings (this, SettingsIn);
   }
   
   
@@ -61,14 +74,14 @@ public class GUI_TextButton extends GUI_Button {
   public void RenderFrame() {
     super.RenderFrame();
     
-    GUI_Functions.SetTextAlignment (TextAlignX, TextAlignY);
+    GUIFunctions.SetTextAlignment (TextAlignX, TextAlignY);
     float TextXPos = XPos + XSize / 2 * (TextAlignX + 1);
     float TextYPos = YPos + YSize / 2 * (TextAlignY + 1);
     
     if (Pressed) {
-      GUI_Functions.DrawText (Text, TextXPos + XMove / 300, TextYPos + YMove / 300, TextColor, (int) (width * TextSize / 100));
+      GUIFunctions.DrawText (Text, TextXPos + XMove / 300, TextYPos + YMove / 300, TextColor, (int) (width * TextSize / 100));
     } else {
-      GUI_Functions.DrawText (Text, TextXPos, TextYPos, TextColor, (int) (width * TextSize / 100));
+      GUIFunctions.DrawText (Text, TextXPos, TextYPos, TextColor, (int) (width * TextSize / 100));
     }
     
   }

@@ -1,5 +1,5 @@
 // Started 09/20/20
-// Last updated 09/28/20
+// Last updated 09/30/20
 
 
 
@@ -7,7 +7,7 @@
 
 
 
-GUI_Functions GUI_Functions = new GUI_Functions(); // YOU NEED TO HAVE THIS AT THE START OF YOUR PROGRAM FOR THIS TO WORK
+GUI_Functions GUIFunctions = new GUI_Functions(); // YOU NEED TO HAVE THIS AT THE START OF YOUR PROGRAM FOR THIS TO WORK
 
 
 
@@ -134,7 +134,14 @@ GUI_TextButton ButtonFrame = new GUI_TextButton (new String[] {
   "XSize:", "0.1" ,
   "YSize:", "0.1" ,
   "Text:" , "Click me!",
+  "TextSize:", "1.25",
 });
+
+
+
+
+
+GUI_TextFrame LoadedFrame;
 
 
 
@@ -143,7 +150,7 @@ GUI_TextButton ButtonFrame = new GUI_TextButton (new String[] {
 GUI_ImageButton ImageButtonFrame = new GUI_ImageButton (new String[] {
   "Name:" , "ImageButtonFrame",
   "XPos:" , "0.1" ,
-  "YPos:" , "0.55",
+  "YPos:" , "0.66",
   "XSize:", "0.1" ,
   "YSize:", 16.0 / 9.0 * 0.1 + " ",
 });
@@ -184,7 +191,7 @@ void setup() {
         NestedFrame3.AddChild (NestedFrame4);
           NestedFrame4.AddChild (NestedFrame5);
   
-  thread ("LoadImages");
+  thread ("LoadFrames");
   
   
   
@@ -215,17 +222,24 @@ void setup() {
 
 
 
-void LoadImages() {
-  try {
-    
-    ImageButtonFrame.Image = loadImage ("https://processing.org/imag/processing3-logo.png"); // Go to https://processing.org/img for a list of images
-    if (ImageButtonFrame.Image == null) println (0/0);
-    ImageButtonFrame.RenderFrame = false;
-    
-  } catch (Exception e) {
-    println ();
-    println ("Error: could not load image for " + ImageButtonFrame);
+void LoadFrames() {
+  
+  String LoadedFrameFileName = dataPath("") + "/GUI/Child.GUI_TextFrame";
+  File LoadedFrameFile = new File (LoadedFrameFileName);
+  if (LoadedFrameFile.exists()) {
+    AllFrames.AddChild (new GUI_TextFrame (LoadedFrameFile));
+  } else {
+    println ("Error: Could not find the file " + '"' + LoadedFrameFileName + '"' + " for LoadedFrame.");
   }
+  
+  ImageButtonFrame.Image = loadImage ("https://processing.org/img/processing3-logo.png"); // Go to https://processing.org/img for a list of images
+  if (ImageButtonFrame.Image != null) {
+    ImageButtonFrame.RenderFrame = false;
+  } else {
+    println ();
+    println ("Error: Could not load image for " + ImageButtonFrame);
+  }
+  
 }
 
 
@@ -276,7 +290,7 @@ void draw() {
   
   
   
-  AllFrames.Render(); // Renders all frames
+  AllFrames.Render(); // This renders all frames
   
   
   

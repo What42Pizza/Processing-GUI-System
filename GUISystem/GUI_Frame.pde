@@ -59,14 +59,47 @@ public class GUI_Frame {
   }
   
   public GUI_Frame (String[] SettingsIn) {
-    GUI_Functions.SetFrameSettings (this, SettingsIn);
+    GUIFunctions.SetFrameSettings (this, SettingsIn);
   }
   
   public GUI_Frame (String[] SettingsIn, GUI_Frame[] ChildrenIn) {
+    GUIFunctions.SetFrameSettings (this, SettingsIn);
     for (GUI_Frame F : ChildrenIn) {
       Children.add (F);
     }
-    GUI_Functions.SetFrameSettings (this, SettingsIn);
+  }
+  
+  public GUI_Frame (boolean EnabledIn) {
+    Enabled = EnabledIn;
+  }
+  
+  
+  
+  public GUI_Frame (File FrameFolder) {
+    this (FrameFolder, loadStrings (GetChildFile (FrameFolder, "Properties.txt")));
+  }
+  
+  public GUI_Frame (File FrameFolder, String[] SettingsIn) {
+    
+    GUIFunctions.SetFrameSettings (this, SettingsIn);
+    
+    if (FrameFolder == null) { // I don't think this will ever be true because it would crash before getting here but I'll still keep it anyway (actually it could be null if this constructor was called outside the GUI)
+      println ("Error while creating GUI element from file: The input file for this GUI_Frame cannot be null."); // ------------ Check if FrameFolder isn't null and is a folder
+      return;
+    } else if (!FrameFolder.isDirectory()) {
+      println ("Error while creating GUI element from file: The file " + FrameFolder.getAbsolutePath() + " is not a folder.");
+      return;
+    }
+    
+    File[] FolderDir = FrameFolder.listFiles();
+    
+    for (File F : FolderDir) {
+      String FName = F.getName();
+      if (FName.startsWith("Child.") && F.isDirectory()) { // Yes, String has .startsWith()
+        AddChildFromFolder (F);
+      }
+    }
+    
   }
   
   
@@ -93,7 +126,7 @@ public class GUI_Frame {
   
   
   public void RenderFrame() {
-    GUI_Functions.DrawRect (XPos, YPos, XSize, YSize, BackgroundColor, EdgeSize, EdgeColor);
+    GUIFunctions.DrawRect (XPos, YPos, XSize, YSize, BackgroundColor, EdgeSize, EdgeColor);
   }
   
   
@@ -148,6 +181,19 @@ public class GUI_Frame {
   
   
   
+  public void SetChild (String ChildName, GUI_Frame NewChild) {
+    for (int i = 0; i < Children.size(); i ++) {
+      if (Children.get(i).Name.equals(ChildName)) {
+        Children.remove (i);
+        Children.add (i, NewChild);
+        return;
+      }
+    }
+    Children.add (NewChild);
+  }
+  
+  
+  
   public GUI_Frame Decendant (String DescendantName) {
     
     for (GUI_Frame F : Children) { // Check if any children are Decendant
@@ -182,10 +228,10 @@ public class GUI_Frame {
   
   
   public boolean HasMouseHovering() {
-    int ScreenXStart = GUI_Functions.GetScreenX (XPos        );
-    int ScreenXEnd   = GUI_Functions.GetScreenX (XPos + XSize);
-    int ScreenYStart = GUI_Functions.GetScreenY (YPos        );
-    int ScreenYEnd   = GUI_Functions.GetScreenY (YPos + YSize);
+    int ScreenXStart = GUIFunctions.GetScreenX (XPos        );
+    int ScreenXEnd   = GUIFunctions.GetScreenX (XPos + XSize);
+    int ScreenYStart = GUIFunctions.GetScreenY (YPos        );
+    int ScreenYEnd   = GUIFunctions.GetScreenY (YPos + YSize);
     return mouseX >= ScreenXStart && mouseX <= ScreenXEnd && mouseY >= ScreenYStart && mouseY <= ScreenYEnd;
   }
   
@@ -202,8 +248,8 @@ public class GUI_Frame {
         return;
       }
       
-      XPos = Dragging_StartXPos - GUI_Functions.GetXPos (Dragging_StartMouseX - mouseX);
-      YPos = Dragging_StartYPos - GUI_Functions.GetYPos (Dragging_StartMouseY - mouseY);
+      XPos = Dragging_StartXPos - GUIFunctions.GetXPos (Dragging_StartMouseX - mouseX);
+      YPos = Dragging_StartYPos - GUIFunctions.GetYPos (Dragging_StartMouseY - mouseY);
       
     }
     
@@ -213,6 +259,59 @@ public class GUI_Frame {
       Dragging_StartMouseY = mouseY;
       Dragging_StartXPos = XPos;
       Dragging_StartYPos = YPos;
+    }
+    
+  }
+  
+  
+  
+  
+  
+  
+  public void AddChildFromFolder (File Folder) {
+    
+    String FName = Folder.getName(); // Take name and remove "Child."
+    FName = FName.substring (6);
+    
+    String FrameType = "";
+    char[] FChars = FName.toCharArray(); // Remove anything after the second period
+    for (char C : FChars) {
+      if (C == '.')
+        break;
+      else
+        FrameType += C;
+    }
+    
+    switch (FrameType) { // Add child depending on FrameType
+      
+      case ("GUI_Frame"):
+        AddChild (new GUI_Frame (Folder));
+        return;
+      
+      case ("GUI_TextFrame"):
+        AddChild (new GUI_TextFrame (Folder));
+        return;
+      
+      case ("GUI_ImageFrame"):
+        AddChild (new GUI_ImageFrame (Folder));
+        return;
+      
+      case ("GUI_Button"):
+        AddChild (new GUI_Button (Folder));
+        return;
+      
+      case ("GUI_TextButton"):
+        AddChild (new GUI_TextButton (Folder));
+        return;
+      
+      case ("GUI_ImageButton"):
+        AddChild (new GUI_ImageButton (Folder));
+        return;
+      
+      default:
+        println ("Error while creating GUI element from file: The GUI type " + '"' + FrameType + '"' + " was not recognised.");
+        return;
+      
     }
     
   }

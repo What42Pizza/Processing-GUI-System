@@ -45,12 +45,25 @@ public class GUI_TextFrame extends GUI_Frame {
   
   public GUI_TextFrame (String[] SettingsIn) {
     super (SettingsIn);
-    GUI_Functions.SetTextFrameSettings (this, SettingsIn);
+    GUIFunctions.SetTextFrameSettings (this, SettingsIn);
   }
   
   public GUI_TextFrame (String[] SettingsIn, GUI_Frame[] ChildrenIn) {
     super (SettingsIn, ChildrenIn);
-    GUI_Functions.SetTextFrameSettings (this, SettingsIn);
+    GUIFunctions.SetTextFrameSettings (this, SettingsIn);
+  }
+  
+  public GUI_TextFrame (boolean EnabledIn) {
+    super (EnabledIn);
+  }
+  
+  public GUI_TextFrame (File FrameFolder) {
+    this (FrameFolder, loadStrings (GetChildFile (FrameFolder, "Properties.txt")));
+  }
+  
+  public GUI_TextFrame (File FrameFolder, String[] SettingsIn) {
+    super (FrameFolder, SettingsIn);
+    GUIFunctions.SetTextFrameSettings (this, SettingsIn);
   }
   
   
@@ -61,12 +74,14 @@ public class GUI_TextFrame extends GUI_Frame {
   public void RenderFrame() {
     super.RenderFrame();
     
-    GUI_Functions.SetTextAlignment (TextAlignX, TextAlignY);
+    GUIFunctions.SetTextAlignment (TextAlignX, TextAlignY);
     float TextXPos = XPos + XSize / 2 * (TextAlignX + 1);
     float TextYPos = YPos + YSize / 2 * (TextAlignY + 1);
-    GUI_Functions.DrawText (Text, TextXPos, TextYPos, TextColor, (int) (width * TextSize / 100));
+    GUIFunctions.DrawText (Text, TextXPos, TextYPos, TextColor, (int) (width * TextSize / 100));
     
   }
+  
+  
   
   
   

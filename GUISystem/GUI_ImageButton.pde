@@ -41,12 +41,25 @@ public class GUI_ImageButton extends GUI_Button {
   
   public GUI_ImageButton (String[] SettingsIn) {
     super (SettingsIn);
-    GUI_Functions.SetImageButtonSettings (this, SettingsIn);
+    GUIFunctions.SetImageButtonSettings (this, SettingsIn);
   }
   
   public GUI_ImageButton (String[] SettingsIn, GUI_Frame[] ChildrenIn) {
     super (SettingsIn, ChildrenIn);
-    GUI_Functions.SetImageButtonSettings (this, SettingsIn);
+    GUIFunctions.SetImageButtonSettings (this, SettingsIn);
+  }
+  
+  public GUI_ImageButton (boolean EnabledIn) {
+    super (EnabledIn);
+  }
+  
+  public GUI_ImageButton (File FrameFolder) {
+    this (FrameFolder, loadStrings (GetChildFile (FrameFolder, "Properties.txt")));
+  }
+  
+  public GUI_ImageButton (File FrameFolder, String[] SettingsIn) {
+    super (FrameFolder, SettingsIn);
+    GUIFunctions.SetImageButtonSettings (this, SettingsIn);
   }
   
   
@@ -61,9 +74,9 @@ public class GUI_ImageButton extends GUI_Button {
     
     if (Image != null) {
       if (Pressed) {
-        GUI_Functions.DrawImage (Image, XPos + XMove / 300, YPos + YMove / 300, XSize, YSize);
+        GUIFunctions.DrawImage (Image, XPos + XMove / 300, YPos + YMove / 300, XSize, YSize);
       } else {
-        GUI_Functions.DrawImage (Image, XPos, YPos, XSize, YSize);
+        GUIFunctions.DrawImage (Image, XPos, YPos, XSize, YSize);
       }
     }
       
