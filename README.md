@@ -4,21 +4,21 @@
 
 <br />
 
-This is a set of classes you can use in Processing that allows you to easily create GUIs. This was designed in Processing 3.5.3, so you should be using at least that. It might work with earier versions, but I don't know.
+This is a set of classes you can use in Processing that allows you to easily create GUIs. This was designed in Processing 3.5.3, so you should be using at least that. It might work with earlier versions, but I don't know.
 
 The main file is GUISystem/GUISystem.pde, which shows how to use the classes. All other files in GUISystem will need to be copied into your own project in order to be used. Not all files have to be copied, though. If you only need some classes, then you can just copy the files for those classes, the files for their super classes, and GUI_Functions.pde (which always needs to be copied).
 
-### YOU NEED TO HAVE "GUI_Functions GUIFunctions = new GUI_Functions();" AT THE START OF YOUR PROGRAM FOR THIS TO WORK!
+<br />
 
+### YOU NEED TO HAVE THE FOLLOWING CODE AT THE START OF YOUR PROGRAM FOR THIS TO WORK:
 
+`GUI_Functions GUIFunctions = new GUI_Functions();`
 
 <br />
 <br />
 <br />
 <br />
 <br />
-
-
 
 ### Classes:
 
@@ -29,13 +29,10 @@ The main file is GUISystem/GUISystem.pde, which shows how to use the classes. Al
     - GUI_TextButton
     - GUI_ImageButton
 
-
-
 <br />
 <br />
+<br /><br />
 <br />
-
-
 
 ### GUI_Frame:
 
@@ -85,13 +82,10 @@ Constructors:
 - GUI_Frame (String[] Settings, GUI_Frame[] Children)
 - GUI_Frame (File FrameFolder) (see end of readme)
 
-
-
 <br />
 <br />
+<br /><br />
 <br />
-
-
 
 ### GUI_TextFrame
 
@@ -126,13 +120,10 @@ Constructors:
 - GUI_TextFrame (String[] Settings, GUI_Frame[] Children)
 - GUI_TextFrame (File FrameFolder) (see end of readme)
 
-
-
 <br />
 <br />
+<br /><br />
 <br />
-
-
 
 ### GUI_ImageFrame
 
@@ -163,17 +154,14 @@ Constructors:
 - GUI_ImageFrame (String[] Settings, GUI_Frame[] Children)
 - GUI_ImageFrame (File FrameFolder) (see end of readme)
 
-
-
 <br />
 <br />
+<br /><br />
 <br />
-
-
 
 ### GUI_Button
 
-GUI_Button is the most basic button. You should prabably use GUI_TextButton instead of this.
+GUI_Button is the most basic button. You should probably use GUI_TextButton instead of this.
 
 Vars:
 
@@ -201,13 +189,10 @@ Constructors:
 - GUI_Button (String[] Settings, GUI_Frame[] Children)
 - GUI_Button (File FrameFolder) (see end of readme)
 
-
-
 <br />
 <br />
+<br /><br />
 <br />
-
-
 
 ### GUI_TextButton
 
@@ -242,13 +227,10 @@ Constructors:
 - GUI_TextButton (String[] Settings, GUI_Frame[] Children)
 - GUI_TextButton (File FrameFolder) (see end of readme)
 
-
-
 <br />
 <br />
+<br /><br />
 <br />
-
-
 
 ### GUI_ImageButton
 
@@ -279,23 +261,21 @@ Constructors:
 - GUI_ImageButton (String[] Settings, GUI_Frame[] Children)
 - GUI_ImageButton (File FrameFolder) (see end of readme)
 
-
-
 <br />
 <br />
 <br />
 <br />
 <br />
 
+### Using (File FrameFolder) constructors:
 
+This constructor is used for loading a GUI from files.
 
-Using (File FrameFolder) constructors:
+The File given has to be a folder, and it has to have a file named Properties.txt. The Properties file holds information the same way that it would be given to a (String[] Settings) constructor.
 
-Every class has this constructor. It is used for loading a GUI from files.
+FrameFolder can also have other folders in it, and they would be the frame's children. In order for it to recognized as a child, it has to start with "Child." followed by the type of class it is. You can place another period if you want to add addition text.
 
-The File given has to be a folder, and that folder has to have a Properties.txt. The Properties file holds information the same way that it would be given for a String[] constructor.
-
-The folder can also have other folders in it, and they would be the frame's children. In order for it to recognized as a child, it has to start with "Child." followed by the type of class it is. You can place another period if you want to add addition text.
+<br />
 
 Here's an example of how you would set up a GUI that loads GUI/StartingFrame:
 
@@ -304,15 +284,12 @@ Here's an example of how you would set up a GUI that loads GUI/StartingFrame:
     - Properties.txt
     - Child.GUI_Frame.ThisIsANestedFrame
       - Properties.txt
-      - Chils.GUI_Frame.ThisIsAnotherNestedFrame
+      - Child.GUI_Frame.ThisIsAnotherNestedFrame
         - Properties.txt
 
-
-
-
-
 <br />
 <br />
+<br /><br />
 <br />
 
-Last updated 09/30/20
+Last updated 10/01/20
