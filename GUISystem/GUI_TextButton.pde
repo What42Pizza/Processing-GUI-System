@@ -4,9 +4,10 @@ public class GUI_TextButton extends GUI_Button {
   
   
   
-  public String Text = "";
-  public color TextColor = color (0);
-  public float TextSize = 1;
+  public String Text = "Error: text not set";
+  public color  TextColor = color (0);
+  public float  TextSize = 1;
+  public String TextSizeIsRelativeTo = "FRAME"; // This has to be either "FRAME" or "SCREEN"
   
   public int TextAlignX = 0;
   public int TextAlignY = 0;
@@ -58,7 +59,7 @@ public class GUI_TextButton extends GUI_Button {
   }
   
   public GUI_TextButton (File FrameFolder) {
-    this (FrameFolder, loadStrings (GetChildFile (FrameFolder, "Properties.txt")));
+    this (FrameFolder, GUIFunctions.GetSettingsFromFolder (FrameFolder));
   }
   
   public GUI_TextButton (File FrameFolder, String[] SettingsIn) {
@@ -79,9 +80,9 @@ public class GUI_TextButton extends GUI_Button {
     float TextYPos = YPos + YSize / 2 * (TextAlignY + 1);
     
     if (Pressed) {
-      GUIFunctions.DrawText (Text, TextXPos + XMove / 300, TextYPos + YMove / 300, TextColor, (int) (width * TextSize / 100));
+      GUIFunctions.DrawText (Text, TextXPos + XMove / 300, TextYPos + YMove / 300, TextColor, TextSize, TextSizeIsRelativeTo, XPos, XSize);
     } else {
-      GUIFunctions.DrawText (Text, TextXPos, TextYPos, TextColor, (int) (width * TextSize / 100));
+      GUIFunctions.DrawText (Text, TextXPos, TextYPos, TextColor, TextSize, TextSizeIsRelativeTo, XPos, XSize);
     }
     
   }

@@ -52,18 +52,6 @@ void Scale (float XAmount, float YAmount) {
 
 
 
-public File GetChildFile (File Folder, String ChildName) {
-  File Output = null;
-  for (File F : Folder.listFiles()) {
-    if (F.getName().equals(ChildName)) {
-      return F;
-    }
-  }
-  return Output;
-}
-
-
-
 
 
 
@@ -116,12 +104,22 @@ public class GUI_Functions {
   
   
   
-  public void DrawText (String Text, float XPos, float YPos, color TextColor, int TextSize) {
+  public void DrawText (String Text, float TextXPos, float TextYPos, color TextColor, float TextSize, String TextSizeIsRelativeTo, float XPos, float XSize) {
+    
+    switch (TextSizeIsRelativeTo) {
+      case ("FRAME"):
+        textSize (GetScreenXSize (XPos, XSize) * TextSize / 10);
+        break;
+      case ("SCREEN"):
+        textSize (width * TextSize / 100);
+        break;
+      default:
+        println ("Error: TextSizeIsRelativeTo cannot be " + '"' + TextSizeIsRelativeTo + '"' + ", it has to be either " + '"' + "FRAME" + '"' + " or " + '"' + "SCREEN" + '"' + ".");
+        break;
+    }
     
     fill (TextColor);
-    //textAlign (CENTER, CENTER);
-    textSize (TextSize);
-    text (Text, GetScreenX (XPos), GetScreenY (YPos));
+    text (Text, GetScreenX (TextXPos), GetScreenY (TextYPos));
     
   }
   
@@ -163,12 +161,22 @@ public class GUI_Functions {
     return (int)((YPos * CustMatrix_ScaleY + CustMatrix_TranslateY) * height);
   }
   
-  public float GetXPos (int ScreenX) {
+  public float GetFrameX (int ScreenX) {
     return (((float) ScreenX / width) - CustMatrix_TranslateX) / CustMatrix_ScaleX;
   }
   
-  public float GetYPos (int ScreenY) {
+  public float GetFrameY (int ScreenY) {
     return (((float) ScreenY / height) - CustMatrix_TranslateY) / CustMatrix_ScaleY;
+  }
+  
+  
+  
+  public int GetScreenXSize (float XPos, float XSize) {
+    return GetScreenX (XPos + XSize) - GetScreenX (XPos);
+  }
+  
+  public int GetScreenYSize (float YPos, float YSize) {
+    return GetScreenY (YPos + YSize) - GetScreenY (YPos);
   }
   
   
@@ -189,6 +197,38 @@ public class GUI_Functions {
       }
     }
     return null;
+  }
+  
+  
+  
+  public String[] GetSettingsFromFolder (File FolderIn) {
+    
+    if (!FolderIn.isDirectory()) {
+      println ("Error: The File given for constructing a GUI element (" + FolderIn.getAbsolutePath() + ") cannot be file, it must be a folder.");
+      return new String[]{};
+    }
+    
+    File PropertiesFile = GetChildFile (FolderIn, "Properties.txt");
+    
+    if (PropertiesFile == null) {
+      println ("Error: Could not find Properties.txt in " + FolderIn.getAbsolutePath() + " when constructing GUI element.");
+      return new String[]{};
+    }
+    
+    return loadStrings (PropertiesFile);
+    
+  }
+  
+  
+  
+  public File GetChildFile (File Folder, String ChildName) {
+    File Output = null;
+    for (File F : Folder.listFiles()) {
+      if (F.getName().equals(ChildName)) {
+        return F;
+      }
+    }
+    return Output;
   }
   
   

@@ -54,7 +54,7 @@ public class GUI_ImageFrame extends GUI_Frame {
   }
   
   public GUI_ImageFrame (File FrameFolder) {
-    this (FrameFolder, loadStrings (GetChildFile (FrameFolder, "Properties.txt")));
+    this (FrameFolder, GUIFunctions.GetSettingsFromFolder (FrameFolder));
   }
   
   public GUI_ImageFrame (File FrameFolder, String[] SettingsIn) {

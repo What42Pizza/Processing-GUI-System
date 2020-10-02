@@ -4,9 +4,10 @@ public class GUI_TextFrame extends GUI_Frame {
   
   
   
-  public String Text = "";
-  public color TextColor = color (0);
-  public float TextSize = 1;
+  public String Text = "Error: text not set";
+  public color  TextColor = color (0);
+  public float  TextSize = 1;
+  public String TextSizeIsRelativeTo = "FRAME"; // This has to be either "FRAME" or "SCREEN"
   
   public int TextAlignX = 0;
   public int TextAlignY = 0;
@@ -58,7 +59,7 @@ public class GUI_TextFrame extends GUI_Frame {
   }
   
   public GUI_TextFrame (File FrameFolder) {
-    this (FrameFolder, loadStrings (GetChildFile (FrameFolder, "Properties.txt")));
+    this (FrameFolder, GUIFunctions.GetSettingsFromFolder (FrameFolder));
   }
   
   public GUI_TextFrame (File FrameFolder, String[] SettingsIn) {
@@ -77,7 +78,7 @@ public class GUI_TextFrame extends GUI_Frame {
     GUIFunctions.SetTextAlignment (TextAlignX, TextAlignY);
     float TextXPos = XPos + XSize / 2 * (TextAlignX + 1);
     float TextYPos = YPos + YSize / 2 * (TextAlignY + 1);
-    GUIFunctions.DrawText (Text, TextXPos, TextYPos, TextColor, (int) (width * TextSize / 100));
+    GUIFunctions.DrawText (Text, TextXPos, TextYPos, TextColor, TextSize, TextSizeIsRelativeTo, XPos, XSize);
     
   }
   

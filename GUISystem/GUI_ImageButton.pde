@@ -54,7 +54,7 @@ public class GUI_ImageButton extends GUI_Button {
   }
   
   public GUI_ImageButton (File FrameFolder) {
-    this (FrameFolder, loadStrings (GetChildFile (FrameFolder, "Properties.txt")));
+    this (FrameFolder, GUIFunctions.GetSettingsFromFolder (FrameFolder));
   }
   
   public GUI_ImageButton (File FrameFolder, String[] SettingsIn) {

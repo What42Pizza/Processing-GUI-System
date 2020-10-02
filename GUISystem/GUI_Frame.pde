@@ -76,7 +76,7 @@ public class GUI_Frame {
   
   
   public GUI_Frame (File FrameFolder) {
-    this (FrameFolder, loadStrings (GetChildFile (FrameFolder, "Properties.txt")));
+    this (FrameFolder, GUIFunctions.GetSettingsFromFolder (FrameFolder));
   }
   
   public GUI_Frame (File FrameFolder, String[] SettingsIn) {
@@ -164,13 +164,32 @@ public class GUI_Frame {
   
   
   public void AddChild (GUI_Frame NewChild) {
+    if (NewChild == null) {
+      println ("Error: You cannot add a null child to " + this + ".");
+      return;
+    }
     Children.add (NewChild);
     NewChild.Parent = this;
   }
   
   
   
+  public void AddChild (int Index, GUI_Frame NewChild) {
+    if (NewChild == null) {
+      println ("Error: You cannot add a null child to " + this + ".");
+      return;
+    }
+    Children.add (Index, NewChild);
+    NewChild.Parent = this;
+  }
+  
+  
+  
   public GUI_Frame Child (String ChildName) {
+    if (ChildName == null) {
+      println ("Error: You cannot search for a child with a null name in " + this + ".");
+      return null;
+    }
     for (GUI_Frame F : Children) {
       if (F.Name.equals(ChildName)) {
         return F;
@@ -216,11 +235,11 @@ public class GUI_Frame {
   
   
   public GUI_Frame Ancestor (String AncestorName) {
-    GUI_Frame SearchedParent = Parent; // Needs better name
-    while (SearchedParent != null && !SearchedParent.Name.equals(AncestorName)) {
-      SearchedParent = SearchedParent.Parent;
+    GUI_Frame Ancestor = Parent; // Needs better name
+    while (!(Ancestor == null || Ancestor.Name.equals(AncestorName))) {
+      Ancestor = Ancestor.Parent;
     }
-    return SearchedParent;
+    return Ancestor;
   }
   
   
@@ -248,8 +267,8 @@ public class GUI_Frame {
         return;
       }
       
-      XPos = Dragging_StartXPos - GUIFunctions.GetXPos (Dragging_StartMouseX - mouseX);
-      YPos = Dragging_StartYPos - GUIFunctions.GetYPos (Dragging_StartMouseY - mouseY);
+      XPos = Dragging_StartXPos - GUIFunctions.GetFrameX (Dragging_StartMouseX - mouseX);
+      YPos = Dragging_StartYPos - GUIFunctions.GetFrameY (Dragging_StartMouseY - mouseY);
       
     }
     

@@ -1,9 +1,9 @@
 // Started 09/20/20
-// Last updated 09/30/20
+// Last updated 10/02/20
 
 
 
-// Everything in here is just an example of how to use this (but it's mostly just testing)
+// Everything in here is just an example of how to use this (but it's also just testing)
 
 
 
@@ -42,7 +42,7 @@ GUI_Frame NestedFrame1 = new GUI_TextFrame (new String[] {
   "Draggable:", "true",
   "Text:", "Drag me!",
   "TextAlignY:", "-1",
-  "TextSize:", "2",
+  "TextSize:", "0.75",
 });
 
 GUI_Frame NestedFrame2 = new GUI_Frame (new String[] {
@@ -118,7 +118,6 @@ GUI_TextFrame EnableFrame = new GUI_TextFrame (new String[] {
   "YSize:", "0.1" ,
   "Text:" , "Enable",
   "TextAlignY:", "-1",
-  "TextSize:", "1.5",
 });
 
 GUI_Frame NestedEnableFrame = new GUI_Frame ("NestedEnableFrame");
@@ -227,7 +226,7 @@ void LoadFrames() {
   String LoadedFrameFileName = dataPath("") + "/GUI/Child.GUI_TextFrame";
   File LoadedFrameFile = new File (LoadedFrameFileName);
   if (LoadedFrameFile.exists()) {
-    AllFrames.AddChild (new GUI_TextFrame (LoadedFrameFile));
+    AllFrames.AddChild (0, new GUI_TextFrame (LoadedFrameFile));
   } else {
     println ("Error: Could not find the file " + '"' + LoadedFrameFileName + '"' + " for LoadedFrame.");
   }

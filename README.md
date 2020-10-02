@@ -44,18 +44,18 @@ Vars:
 
 - String Name
 
-- float XPos (0 - 1) (default 0.25)
-- float YPos (0 - 1) (default 0.25)
-- float XSize (0 - 1) (default 0.5)
-- float YSize (0 - 1) (default 0.5)
+- float XPos (0 - 1) (default: 0.25)
+- float YPos (0 - 1) (default: 0.25)
+- float XSize (0 - 1) (default: 0.5)
+- float YSize (0 - 1) (default: 0.5)
 
-- color BackgroundColor (default 127)
-- color EdgeColor (default 0)
-- int EdgeSize (default 1)
+- color BackgroundColor (default: 127)
+- color EdgeColor (default: 0)
+- int EdgeSize (default: 1)
 
-- boolean Draggable (default false)
-- boolean Visible (default true) (sets whether this frame is visible)
-- boolean Enabled (default true) (sets whether this frame and all children are visible)
+- boolean Draggable (default: false)
+- boolean Visible (default: true) (sets whether this frame is visible)
+- boolean Enabled (default: true) (sets whether this frame and all children are visible)
 
 - ArrayList <GUI_Frame> Children
 - GUI_Frame Parent
@@ -95,12 +95,12 @@ GUI_TextFrame is like a frame, but with text.
 
 Vars:
 
-- String Text (default "")
-- color TextColor (default 0)
-- float TextSize (default 1 (1/100 of width))
-
-- int TextAlignX (-1 = LEFT, 0 = CENTER, 1 = RIGHT; default = 0)
-- int TextAlignY (-1 = TOP, 0 = CENTER, 1 = BOTTM; default = 0)
+- String Text (default: "Error: text not set")
+- color TextColor (default: 0)
+- float TextSize (default: 1 (1/100 of screen width or 1/10 of frame width))
+- String TextSizeIsRelativeTo (either "FRAME" or "SCREEN"; default: "FRAME")
+- int TextAlignX (-1 = LEFT, 0 = CENTER, 1 = RIGHT; default: 0)
+- int TextAlignY (-1 = TOP, 0 = CENTER, 1 = BOTTM; default: 0)
 
 <br />
 
@@ -165,7 +165,7 @@ GUI_Button is the most basic button. You should probably use GUI_TextButton inst
 
 Vars:
 
-- boolean UsePressedColor (default true)
+- boolean UsePressedColor (default: true)
 - color PressedBackgroundColor (default: 63)
 - float XMove (default: 0)
 - float YMove (default: 1)
@@ -202,12 +202,12 @@ GUI_TextButton is like a button, but with text.
 
 Vars:
 
-- String Text (default "")
-- color TextColor (default 0)
-- float TextSize (default 1 (1/100 of width))
-
-- int TextAlignX (-1 = LEFT, 0 = CENTER, 1 = RIGHT; default = 0)
-- int TextAlignY (-1 = TOP, 0 = CENTER, 1 = BOTTM; default = 0)
+- String Text (default: "Error: text not set")
+- color TextColor (default: 0)
+- float TextSize (default: 1 (1/100 of screen width or 1/10 of frame width))
+- String TextSizeIsRelativeTo (either "FRAME" or "SCREEN"; default: "FRAME")
+- int TextAlignX (-1 = LEFT, 0 = CENTER, 1 = RIGHT; default: 0)
+- int TextAlignY (-1 = TOP, 0 = CENTER, 1 = BOTTM; default: 0)
 
 <br />
 
@@ -292,4 +292,4 @@ Here's an example of how you would set up a GUI that loads GUI/StartingFrame:
 <br /><br />
 <br />
 
-Last updated 10/01/20
+Last updated 10/02/20
