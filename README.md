@@ -1,6 +1,14 @@
 # Processing GUI System
 
-# THIS IS A WORK IN PROGRESS.
+# THERE IS A NEW VERSION AVAILABLE: https://github.com/What42Pizza/Processing-GUI-System-2
+
+<br />
+<br />
+<br />
+<br />
+<br />
+
+## THIS IS A WORK IN PROGRESS.
 
 <br />
 
@@ -8,6 +16,8 @@ This is a set of classes you can use in Processing that allows you to easily cre
 
 The main file is GUISystem/GUISystem.pde, which shows how to use the classes. All other files in GUISystem will need to be copied into your own project in order to be used. Not all files have to be copied, though. If you only need some classes, then you can just copy the files for those classes, the files for their super classes, and GUI_Functions.pde (which always needs to be copied).
 
+<br />
+<br />
 <br />
 
 ### YOU NEED TO HAVE THE FOLLOWING CODE AT THE START OF YOUR PROGRAM FOR THIS TO WORK:
